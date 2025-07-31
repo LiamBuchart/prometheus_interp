@@ -1,0 +1,7 @@
+# clean 
+docs/build/
+
+*.shp
+*.shx
+*.dbf
+*.prj
