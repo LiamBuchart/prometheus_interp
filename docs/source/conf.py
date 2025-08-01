@@ -25,15 +25,15 @@ release = '0.1'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = ['myst_parser',
+extensions = ['nbsphinx',
+              'myst_parser',
               'sphinx.ext.mathjax',
               'sphinx.ext.viewcode',
               'sphinx.ext.autodoc',
               'sphinx.ext.coverage',
               'sphinx.ext.napoleon',
               'sphinx.ext.autosectionlabel',
-              'sphinx_copybutton',
-              'nbsphinx'
+              'sphinx_copybutton'
 ]
 
 # mathjax fix
