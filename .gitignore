@@ -1,0 +1,7 @@
+# clean 
+*.dbf
+*.prj
+*.shp
+*.shx
+
+build/
