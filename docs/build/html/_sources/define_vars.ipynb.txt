@@ -7,9 +7,9 @@
    "source": [
     "# User Input for a Prometheus Run\n",
     "=================================\n",
-    "### Please run each code block and follow the instructions\n",
-    "#### The end result will be a downloadable .csv file with the necessary values\n",
-    "#### Ensure that you have wget installed on your machine"
+    "Please run each code block and follow the instructions\n",
+    "The end result will be a downloadable .csv file with the necessary values\n",
+    "Ensure that you have wget installed on your machine"
    ]
   },
   {
