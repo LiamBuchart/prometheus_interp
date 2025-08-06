@@ -4,5 +4,6 @@
 *.shp
 *.shx
 
-build/
+# may be neccessary? not sure 
+#build/
 
