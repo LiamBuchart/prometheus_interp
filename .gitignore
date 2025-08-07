@@ -7,3 +7,5 @@
 # may be neccessary? not sure 
 #build/
 
+# my map is too large
+*.html
