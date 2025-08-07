@@ -1,0 +1,14 @@
+{
+    "wx_vars": {
+        "temperature": "TMP_AGL_2m",
+        "humidity": "RH_AGL_2m",
+        "WindSpeed": "WIND_AGL_10m",
+        "WindDirection": "WDIR_AGL_10m"
+    },
+
+    "configuration": {
+        "resolution": "2.5km",
+        "grid": "0.0225"
+    }
+
+}

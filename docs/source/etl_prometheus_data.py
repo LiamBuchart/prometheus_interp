@@ -18,19 +18,22 @@ import geopandas as gpd
 from file_funcs import execute_command
 
 # use wget to download the file
-extensions = [".shp", ".shx", ".dbf", ".prj"]
-link = "https://cwfis.cfs.nrcan.gc.ca/downloads/hotspots/perimeters"
-json_file = "Canada_perimeters.json"
+link = "https://dd.weather.gc.ca/"
+
 
 cwd = Path.cwd()
 parent = cwd.parent
 
-# Download the NFDB fire polygons using wget
-for ext in extensions:
-    output, error = execute_command(f"wget {link}{ext}")
+def get_MSc(filename):
+    """
+    Get the file name for the MSc data based on user input
+    uses wget, might need to switch to sarrcenia if using it alot
+    """
+    output, error = execute_command(f"wget -P ./temp/ {filename}")
 
-    if error:
-        print(f"Error downloading NFDB fire polygons: {error}")
+    if error: 
+        print(f"Error downloading MSc data: {error}")
+        print(f"Isses with the file: {filename}")
     else:
-        print("NFDB fire polygons downloaded successfully.")
+        print(f"Sucessfully downloaded {filename}")
         print(f"Output: {output}")
