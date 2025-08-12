@@ -9,31 +9,35 @@
 
 """
 
-import subprocess
-import pathlib
 from pathlib import Path
 import os
 import geopandas as gpd
-
-from file_funcs import execute_command
+import xarray as xr
 
 # use wget to download the file
 link = "https://dd.weather.gc.ca/"
 
-
-cwd = Path.cwd()
-parent = cwd.parent
-
-def get_MSc(filename):
+# function to interpolate grib2 file data to a point
+def interpolate_grib2_to_point(grib2_file, variables, point):
     """
-    Get the file name for the MSc data based on user input
-    uses wget, might need to switch to sarrcenia if using it alot
+    Interpolates grib2 file data to a specific point.   
     """
-    output, error = execute_command(f"wget -P ./temp/ {filename}")
 
-    if error: 
-        print(f"Error downloading MSc data: {error}")
-        print(f"Isses with the file: {filename}")
-    else:
-        print(f"Sucessfully downloaded {filename}")
-        print(f"Output: {output}")
+    # open file with xarray
+    ds = xr.open_dataset(grib2_file, engine='cfgrib')
+
+    # dictionary to hold the interpolated data
+    interpolated_data = {}
+    for var in variables:
+        if var in ds:
+            # interpolate the variable to the point
+            interpolated_data = ds[var].interp(lat=point[0], lon=point[1], method='linear')
+            print(f"Interpolated {var} at {point}: {interpolated_data.values}")
+
+            # add value to the dictionary
+            interpolated_data[var] = interpolated_data.values.item()
+        else:
+            print(f"Variable {var} not found in the dataset.")
+
+    return interpolated_data
+

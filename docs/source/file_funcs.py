@@ -1,5 +1,9 @@
 # required functions to get everything that we need
 import subprocess
+import json
+
+import pandas as pd
+
 def execute_command(command):
 
     """
@@ -31,3 +35,47 @@ def execute_command(command):
 
         # if an exception occurs, return the exception message as an error
         return None, str(e)
+    
+
+# function to set files names
+def set_filenames(model, run, year, month, day, forecast_length):
+    """
+        Set the filenames based on the model, run, year, month, day, and forecast length.
+        Paramters are selected in define_vars.ipynb - funciton also loads specific model variables from JSON files.
+
+        model: str - the model name (e.g., 'rdps', 'hrdps')
+        Returns a DataFrame with the full path, extension, and file name for each forecast hour.
+    """
+    import pandas as pd
+
+    print(f"Selected Model: {model}")
+    print(f"Selected Model Run: {run}")
+    print(f"Selected Date: {year}-{month:02d}-{day:02d}")
+    print(f"Forecast Length: {forecast_length} hours")
+
+    file_list = pd.DataFrame(columns=['full_path', 'extension', 'file'])
+    # Create the filename based on the selections
+    if str(model) == 'rdps':
+        # load the rdps_vars.json file
+        with open('rdps_vars.json', 'r') as f:
+            model_vars = json.load(f)
+    elif str(model) == 'hrdps':
+        # load the hrdps_vars.json file
+        with open('hrdps_vars.json', 'r') as f:
+            model_vars = json.load(f)
+        
+    for hh in range(0, forecast_length):
+        extension = f"https://dd.weather.gc.ca/{year}{month:02d}{day:02d}/WXO-DD/model_{model}/{model_vars['configuration']['resolution']}/{run}/0{hh:02d}/"
+            
+        for var in model_vars['wx_vars'].values():
+            file = f"{year}{month:02d}{day:02d}T{run}Z_MSC_{model.upper()}_{var}_RLatLon{model_vars['configuration']['grid']}_PT0{hh}H.grib2"
+
+            # populate the file_list DataFrame
+            new_row = {
+                'full_path': extension + file,
+                'extension': extension,
+                'file': file
+            }
+            file_list.loc[len(file_list)] = new_row
+
+    return file_list
