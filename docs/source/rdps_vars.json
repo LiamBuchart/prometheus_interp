@@ -1,14 +1,24 @@
 {
     "wx_vars": {
-        "temperature": "AirTemp_AGL_2m",
-        "humidity": "RelativeHumidity_AGL_2m",
-        "WindSpeed": "WindSpeed_AGL_10m",
-        "WindDirection": "WindDir_AGL_10m"
+        "temperature": "AirTemp_AGL-2m",
+        "humidity": "RelativeHumidity_AGL-2m",
+        "WindSpeed": "WindSpeed_AGL-10m",
+        "WindDirection": "WindDir_AGL-10m",
+        "Precipitation": "Precip-Accum1hr_Sfc"
+
     },
 
     "configuration": {
         "resolution": "10km",
         "grid": "0.09"
+    },
+
+    "grib_vars": {
+        "temperature": "t2m",
+        "humidity": "r2",
+        "WindSpeed": "si10",
+        "WindDirection": "wdir10",
+        "Precipitation": "psfc"
     }
 
 }

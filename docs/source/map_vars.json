@@ -1,0 +1,9 @@
+{
+    "map_bounds": {
+        "min_lat": 42,
+        "max_lat": 80,
+        "min_lon": -141,
+        "max_lon": -51
+    }
+
+}

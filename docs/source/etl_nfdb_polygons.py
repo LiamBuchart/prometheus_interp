@@ -9,9 +9,10 @@
 """
 
 from pathlib import Path
-import wget
 import os
 import geopandas as gpd
+import requests
+import shutil
 
 # use wget to download the file
 extensions = [".shp", ".shx", ".dbf", ".prj"]
@@ -29,10 +30,15 @@ if os.path.exists("perimeters.shp"):
 
 ## Download the NFDB fire polygons using wget
 for ext in extensions:
-    ff = wget.download(f"{link}{ext}", out=str(cwd))
+
+    with requests.get(f"{link}{ext}", stream=True) as r:
+        r.raise_for_status()
+        with open(f"perimeters{ext}", 'wb') as f:
+            for chunk in r.iter_content(chunk_size=8192):
+                f.write(chunk)
+
+        print(f"Downloaded perimeters{ext}")
 
 # convert the shapefile to a GeoJson file
 gdf = gpd.read_file(f"./perimeters.shp") 
 gdf.to_file(json_file, driver='GeoJSON')
-#with open(json_file, 'w') as f:
-#    f.write(gdf.to_json())

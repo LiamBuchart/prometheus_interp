@@ -3,12 +3,20 @@
         "temperature": "TMP_AGL_2m",
         "humidity": "RH_AGL_2m",
         "WindSpeed": "WIND_AGL_10m",
-        "WindDirection": "WDIR_AGL_10m"
+        "WindDirection": "WDIR_AGL_10m",
+        "Precipitation": "Precip-Accum1hr_Sfc"
     },
 
     "configuration": {
         "resolution": "2.5km",
         "grid": "0.0225"
-    }
+    },
 
+    "grib_vars": {
+        "temperature": "t2",
+        "humidity": "r2",
+        "WindSpeed": "si10",
+        "WindDirection": "wdir10",
+        "Precipitation": "psfc"
+    }
 }

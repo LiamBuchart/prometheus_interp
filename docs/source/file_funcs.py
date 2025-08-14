@@ -1,6 +1,7 @@
 # required functions to get everything that we need
 import subprocess
 import json
+from datetime import datetime, timedelta
 
 import pandas as pd
 
@@ -35,25 +36,32 @@ def execute_command(command):
 
         # if an exception occurs, return the exception message as an error
         return None, str(e)
-    
+
+
+def closest_below(lst, target):
+    below_target = [x for x in lst if x < target]
+    return max(below_target, default=None)
+
 
 # function to set files names
-def set_filenames(model, run, year, month, day, forecast_length):
+def set_filenames(model, run, year, month, day, hour, forecast_length, offset):
     """
         Set the filenames based on the model, run, year, month, day, and forecast length.
         Paramters are selected in define_vars.ipynb - funciton also loads specific model variables from JSON files.
 
         model: str - the model name (e.g., 'rdps', 'hrdps')
         Returns a DataFrame with the full path, extension, and file name for each forecast hour.
+
+        input variables are all determined by sliders which are set in define_vars.ipynb
     """
     import pandas as pd
 
     print(f"Selected Model: {model}")
     print(f"Selected Model Run: {run}")
-    print(f"Selected Date: {year}-{month:02d}-{day:02d}")
+    print(f"Selected Date: {year}-{month:02d}-{day:02d}--{hour:02d}")
     print(f"Forecast Length: {forecast_length} hours")
 
-    file_list = pd.DataFrame(columns=['full_path', 'extension', 'file'])
+    file_list = pd.DataFrame(columns=['full_path', 'extension', 'file', 'variable', 'datetime'])
     # Create the filename based on the selections
     if str(model) == 'rdps':
         # load the rdps_vars.json file
@@ -63,19 +71,54 @@ def set_filenames(model, run, year, month, day, forecast_length):
         # load the hrdps_vars.json file
         with open('hrdps_vars.json', 'r') as f:
             model_vars = json.load(f)
-        
-    for hh in range(0, forecast_length):
+
+    if run == 'auto':
+        # get the nearest model initialization time
+        model_initialization_time = [0, 6, 12, 18]
+        select_model_init = closest_below(model_initialization_time, int(hour))
+
+        # this is the forecast hour that we need to start at from the selected model run
+        h1 = int(hour) - select_model_init
+
+    else: 
+        # for when the user specifies a model run to use 
+        h1 = hour - run
+
+    print("The model starts at ")
+
+    # simple countr of the number of hours that have been processed
+    hours_run = 0
+    for hh in range(h1, h1+forecast_length):
+        # note that we start from the 1 hr forecast
         extension = f"https://dd.weather.gc.ca/{year}{month:02d}{day:02d}/WXO-DD/model_{model}/{model_vars['configuration']['resolution']}/{run}/0{hh:02d}/"
             
-        for var in model_vars['wx_vars'].values():
-            file = f"{year}{month:02d}{day:02d}T{run}Z_MSC_{model.upper()}_{var}_RLatLon{model_vars['configuration']['grid']}_PT0{hh}H.grib2"
+        for ii in range(len(model_vars['wx_vars'])):  #model_vars['wx_vars'].values():
+            var = list(model_vars['wx_vars'].values())[ii]
+            quick_var = list(model_vars['grib_vars'].values())[ii]
+
+            if hh == 0 and var == "Precip-Accum1hr_Sfc":
+                # nicer to grab the previous model run 6h forecast so we can include any 0h precip
+                file = f"{year}{month:02d}{day:02d}T{run-6}Z_MSC_{model.upper()}_{var}_RLatLon{model_vars['configuration']['grid']}_PT0{hh+6:02d}H.grib2"
+            else:
+                # otherwise loop through and grab the date in the loop
+                file = f"{year}{month:02d}{day:02d}T{run}Z_MSC_{model.upper()}_{var}_RLatLon{model_vars['configuration']['grid']}_PT0{hh:02d}H.grib2"
+
+            # get a datetime variable and add it to the dataframe - this moves it to the local time set by the user
+            timestamp = datetime(int(year), int(month), int(day), int(hour)) - timedelta(hours=int(offset)) + timedelta(hours=int(hours_run))
+
+
+            print(timestamp, file)
 
             # populate the file_list DataFrame
             new_row = {
                 'full_path': extension + file,
                 'extension': extension,
-                'file': file
+                'file': file,
+                'variable': quick_var,
+                'datetime': timestamp
             }
             file_list.loc[len(file_list)] = new_row
+        
+        hours_run += 1
 
     return file_list

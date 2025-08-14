@@ -9,35 +9,94 @@
 
 """
 
-from pathlib import Path
+import cfgrib
 import os
-import geopandas as gpd
 import xarray as xr
+import requests
+import shutil
+import numpy as np
 
-# use wget to download the file
-link = "https://dd.weather.gc.ca/"
+from scipy.spatial import cKDTree
+from scipy.interpolate import griddata
 
-# function to interpolate grib2 file data to a point
-def interpolate_grib2_to_point(grib2_file, variables, point):
+
+# function to download each file using requests
+def download_data(full_path, file_name):
+    try:
+        # Send a GET request to download the file
+        response = requests.get(full_path, stream=True)
+        response.raise_for_status()  # Check for HTTP request errors
+
+        # Write the content to a local file
+        with open(file_name, "wb") as file:
+            for chunk in response.iter_content(chunk_size=8192):
+                file.write(chunk)
+
+        print(f"File downloaded successfully: {file_name}, moving to /temp/ ...")    
+
+        dst_dir = "./temp"
+        # clear .grib2 files from the temp directory 
+        for file in os.listdir(dst_dir):
+            if file.endswith(".grib2"):
+                file_path = os.path.join(dst_dir, file)
+                os.remove(file_path)
+
+        # move the file to the temp directory 
+        shutil.move(file_name, os.path.join(dst_dir, file_name))
+
+        print("Commence interpolation")
+
+    except requests.exceptions.RequestException as e:
+        print(f"An error occurred: {e}")
+
+
+# function to interpolate grib2 file data to a point using KDTree lookup
+def KDTree_interpolate_grib2_to_point(grib2_file, var, point):
     """
     Interpolates grib2 file data to a specific point.   
     """
 
     # open file with xarray
-    ds = xr.open_dataset(grib2_file, engine='cfgrib')
+    ds = xr.open_dataset(f"{grib2_file}", engine='cfgrib', backend_kwargs={'indexpath': ''})
+    
+    # get coordinate grids as numpy
+    lats = ds.coords["latitude"].values.flatten()
+    lons = ds.coords["longitude"].values.flatten()
 
-    # dictionary to hold the interpolated data
-    interpolated_data = {}
-    for var in variables:
-        if var in ds:
-            # interpolate the variable to the point
-            interpolated_data = ds[var].interp(lat=point[0], lon=point[1], method='linear')
-            print(f"Interpolated {var} at {point}: {interpolated_data.values}")
+    coords = np.column_stack( (lats, lons))
 
-            # add value to the dictionary
-            interpolated_data[var] = interpolated_data.values.item()
-        else:
-            print(f"Variable {var} not found in the dataset.")
+        # get required met values as numpy
+    array = ds[str(var)].values.flatten()
 
-    return interpolated_data
+    tree = cKDTree(coords)
+    dist, idx = tree.query((point[0], point[1]))
 
+    nearest_lat, nearest_lon = coords[idx]
+    nearest_met = array[idx]
+    
+    return nearest_lat, nearest_lon, nearest_met
+
+
+# interpolate to a point using linear interpolation
+def GRID_interpolate_grib2_to_point(grib2_file, var, point):
+    """
+    Interpolates grib2 file data to a specific point.   
+    """
+
+    # open file with xarray
+    ds = xr.open_dataset(f"{grib2_file}", engine='cfgrib', backend_kwargs={'indexpath': ''})
+    
+    # get coordinate grids as numpy
+    lats = ds.coords["latitude"].values
+    lons = ds.coords["longitude"].values
+
+    # get required met values as numpy
+    array = ds[str(var)].values
+    
+    # interpolate with scipy to the specified point
+    points = np.array( (lons.flatten(), lats.flatten()) ).T
+    values = array.flatten()
+
+    val0 = griddata(points, values, (point[1], point[0]))
+
+    return val0
