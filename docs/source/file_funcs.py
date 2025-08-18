@@ -89,6 +89,8 @@ def set_filenames(model, run, year, month, day, hour, forecast_length, offset):
     # simple countr of the number of hours that have been processed
     hours_run = 0
     for hh in range(h1, h1+forecast_length):
+        if run == 'auto':
+            run = f"{select_model_init:02d}"
         # note that we start from the 1 hr forecast
         extension = f"https://dd.weather.gc.ca/{year}{month:02d}{day:02d}/WXO-DD/model_{model}/{model_vars['configuration']['resolution']}/{run}/0{hh:02d}/"
             
@@ -96,7 +98,7 @@ def set_filenames(model, run, year, month, day, hour, forecast_length, offset):
             var = list(model_vars['wx_vars'].values())[ii]
             quick_var = list(model_vars['grib_vars'].values())[ii]
 
-            if hh == 0 and var == "Precip-Accum1hr_Sfc":
+            if hh == 0 and var == "Precip-Accum1h_Sfc":
                 # nicer to grab the previous model run 6h forecast so we can include any 0h precip
                 file = f"{year}{month:02d}{day:02d}T{run-6}Z_MSC_{model.upper()}_{var}_RLatLon{model_vars['configuration']['grid']}_PT0{hh+6:02d}H.grib2"
             else:

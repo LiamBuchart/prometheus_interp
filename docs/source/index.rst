@@ -16,3 +16,4 @@ documentation for details.
    :caption: Contents:
 
    define_vars
+   python_environment "Installation"

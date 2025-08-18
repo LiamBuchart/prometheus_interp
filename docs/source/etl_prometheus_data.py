@@ -74,7 +74,7 @@ def KDTree_interpolate_grib2_to_point(grib2_file, var, point):
     nearest_lat, nearest_lon = coords[idx]
     nearest_met = array[idx]
     
-    return nearest_lat, nearest_lon, nearest_met
+    return nearest_met
 
 
 # interpolate to a point using linear interpolation

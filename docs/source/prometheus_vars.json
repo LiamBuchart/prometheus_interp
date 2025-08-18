@@ -1,0 +1,20 @@
+{
+    "required_vars": {
+        "date": "HOURLY",
+        "time": "HOUR",
+        "temperature": "TEMP",
+        "humidity": "RH",
+        "WindDirection": "WD",
+        "WindSpeed": "WS",
+        "Precipitation": "PRECIP"
+    },
+
+    "eccc_equivalents": {
+        "t2m": "TEMP",
+        "r2": "RH",
+        "wdir10": "WD",
+        "si10": "WS",
+        "unknown": "PRECIP"
+    }
+
+}

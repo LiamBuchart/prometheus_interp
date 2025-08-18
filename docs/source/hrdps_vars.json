@@ -4,7 +4,7 @@
         "humidity": "RH_AGL_2m",
         "WindSpeed": "WIND_AGL_10m",
         "WindDirection": "WDIR_AGL_10m",
-        "Precipitation": "Precip-Accum1hr_Sfc"
+        "Precipitation": "Precip-Accum1h_Sfc"
     },
 
     "configuration": {
