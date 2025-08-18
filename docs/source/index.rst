@@ -12,7 +12,7 @@ A simple tool to interpolate ECCC grib data to a specified point. Data comes fro
    :maxdepth: 2
    :caption: Contents:
 
-   define_vars
    setup
+   Notebook <define_vars.ipynb>
 
 * :ref:`search`
