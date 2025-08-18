@@ -1,79 +1,386 @@
-<!DOCTYPE html>
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Prometheus Interpolation Documentation" href="index.html" />
 
-<html lang="en" data-content_root="./">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title># User Input for a Prometheus Run &#8212; Prometheus_Interp 0.1 documentation</title>
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
-    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=686e5160" />
-    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
+        <title># User Input for a Prometheus Run - Prometheus_Interp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/nbsphinx-code-cells.css?v=2aa19091" />
-    <script src="_static/documentation_options.js?v=2709fde1"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"equationNumbers": {"autoNumber": "AMS", "useLabelIds": true}}, "tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "tex2jax_ignore|mathjax_ignore|document", "processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
-    <script async="async" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Prometheus Interpolation Documentation" href="index.html" />
-   
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+    
+    
 
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Prometheus_Interp 0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
   
   
-
-  </head><body>
+  <span class="sidebar-brand-text">Prometheus_Interp 0.1 documentation</span>
   
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#"># User Input for a Prometheus Run</a></li>
+</ul>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
+</div>
+</div>
 
-          <div class="body" role="main">
-            
-  <section id="#-User-Input-for-a-Prometheus-Run">
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/define_vars.ipynb.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="#-User-Input-for-a-Prometheus-Run">
 <h1># User Input for a Prometheus Run<a class="headerlink" href="##-User-Input-for-a-Prometheus-Run" title="Link to this heading">¶</a></h1>
-<p>Please run each code block and follow the instructions The end result will be a downloadable .csv file with the necessary values Ensure that you have wget installed on your machine</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>Please run each code block and follow the instructions. The end result will be a downloadable .csv file with the necessary values. Ensure that you have python and wget installed on your machine before starting.</p>
+<p>There is an accompanying how-to in the “Installations” tab.</p>
+<p>This notebook will always attempt to grab the most up-to-date model data. If running more a previous day, it will grab the 18Z run.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Necessary imports</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">folium</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">streamlit</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">st</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">widgets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">cfgrib</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">streamlit_folium</span><span class="w"> </span><span class="kn">import</span> <span class="n">st_folium</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Polygon</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">shapely.geometry</span><span class="w"> </span><span class="kn">import</span> <span class="n">shape</span>
-<br/><br/><br/></pre></div>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipyleaflet</span><span class="w"> </span><span class="kn">import</span> <span class="n">Map</span><span class="p">,</span> <span class="n">Marker</span><span class="p">,</span> <span class="n">GeoJSON</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">Output</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">griddata</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">etl_prometheus_data</span><span class="w"> </span><span class="kn">import</span> <span class="n">download_data</span><span class="p">,</span> <span class="n">KDTree_interpolate_grib2_to_point</span><span class="p">,</span> <span class="n">GRID_interpolate_grib2_to_point</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">file_funcs</span><span class="w"> </span><span class="kn">import</span> <span class="n">set_filenames</span>
+<br/></pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the etl_nfdf_polygons.py script to get the NFDF polygons</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note: you only have to run this cell every few hours when new perimeters come in&quot;</span><span class="p">)</span>
+<span class="o">%</span><span class="k">run</span> etl_nfdb_polygons.py
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the GeoJSON file with geopandas</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;Canada_perimeters.geojson&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ensure CRS is WGS84</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">to_crs</span><span class="p">(</span><span class="n">epsg</span><span class="o">=</span><span class="mi">4326</span><span class="p">)</span>
+
+<span class="c1"># Optionally drop columns you don&#39;t need</span>
+<span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FIRSTDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;LASTDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;CONSIS_ID&#39;</span><span class="p">])</span>
+
+<span class="c1"># Convert to GeoJSON dict</span>
+<span class="n">geojson_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">gdf</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span>
+
+<span class="c1"># Center the map on the centroid of all polygons</span>
+<span class="n">center</span> <span class="o">=</span> <span class="n">gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span><span class="o">.</span><span class="n">centroid</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Add the GeoJSON layer</span>
+<span class="n">geojson_layer</span> <span class="o">=</span> <span class="n">GeoJSON</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">geojson_data</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NFDB Polygons&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span><span class="p">{</span>
+        <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;fillOpacity&#39;</span><span class="p">:</span> <span class="mf">0.6</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">geojson_layer</span><span class="p">)</span>
+
+<span class="c1"># add marker that will be updated on click</span>
+<span class="n">marker</span> <span class="o">=</span> <span class="n">Marker</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="n">center</span><span class="p">)</span>
+<span class="n">m</span><span class="o">.</span><span class="n">add_layer</span><span class="p">(</span><span class="n">marker</span><span class="p">)</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">Output</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">handle_map_click</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;click&#39;</span><span class="p">:</span>
+        <span class="n">latlon</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;coordinates&#39;</span><span class="p">)</span>
+        <span class="n">marker</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="n">latlon</span>
+        <span class="k">with</span> <span class="n">out</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Clicked location: </span><span class="si">{</span><span class="n">latlon</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">m</span><span class="o">.</span><span class="n">on_interaction</span><span class="p">(</span><span class="n">handle_map_click</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Click on the map to get coordinates&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Double-click to zoom in or use the zoom controls&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your final click is the selected location, ensure that the marker is moved to where you want it&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-2025-08-01 14:33:01.473 Thread &#39;MainThread&#39;: missing ScriptRunContext! This warning can be ignored when running in bare mode.
+C:\Users\lbuchart\AppData\Local\Temp\ipykernel_37388\131360457.py:14: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
+  center = gdf.geometry.unary_union.centroid.coords[0][::-1]
 </pre></div></div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Click on the map to get coordinates
+Double-click to zoom in or use the zoom controls
+Your final click is the selected location, ensure that the marker is moved to where you want it
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6b0622f971cd485f94a28c5612eb3dad", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3598c0a596ff4d0cbb3746222781f856", "version_major": 2, "version_minor": 0}</script></div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the etl_nfdf_polygons.py script to get the NFDF polygons</span>
-<span class="o">%</span><span class="k">run</span> etl_nfdb_polygons.py
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="n">marker</span><span class="o">.</span><span class="n">location</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final coordinates you have selected are: </span><span class="si">{</span><span class="n">coords</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># save the map to an HTML file</span>
+<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;nfdb_polygons_map.html&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -82,121 +389,724 @@
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Shapefile already exists. Downloading the latest data...
+The final coordinates you have selected are: [62.05448866672659, -117.15305942475538]
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now select model and dates to download ECCC data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="n">model_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rdps&#39;</span><span class="p">,</span> <span class="s1">&#39;hrdps&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;rdps&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Model:&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">model_run</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;00&#39;</span><span class="p">,</span> <span class="s1">&#39;06&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="s1">&#39;18&#39;</span><span class="p">,</span> <span class="s2">&quot;auto&quot;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Model Initialization Time:&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">current_year</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
+<span class="n">year_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">current_year</span><span class="p">),</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
+    <span class="nb">max</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">current_year</span><span class="p">),</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Year:&#39;</span><span class="p">,</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">month_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Month:&#39;</span><span class="p">,</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">day_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Day:&#39;</span><span class="p">,</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">hour_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Hour (UTC):&#39;</span><span class="p">,</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="n">forecast_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 24</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># 72</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 6</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Forecast Length (hours):&#39;</span><span class="p">,</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="n">time_offset</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
+    <span class="n">value</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Number of hours behind UTC:&#39;</span><span class="p">,</span>
+    <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="c1"># Display the widgets</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Requires your initial forecast hour in UTC, and your current timezone offset from UTC..&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;please&quot;</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">model_dropdown</span><span class="p">,</span> <span class="n">model_run</span><span class="p">,</span> <span class="n">year_slider</span><span class="p">,</span> <span class="n">month_slider</span><span class="p">,</span> <span class="n">day_slider</span><span class="p">,</span> <span class="n">hour_slider</span><span class="p">,</span> <span class="n">forecast_slider</span><span class="p">,</span> <span class="n">time_offset</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Once you are happy with your selections&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Move to the next cell to begin gathering files and interpolating&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note that the MSC Datamart only has data from the previous 30 days&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Requires your initial forecast hour in UTC, and your current timezone offset from UTC..
+please
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "54c9bc54851945eb8c03224ccede3dbd", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4dca25404e784fbb89a977b59aaa947f", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "55392f061cd145dab6bdf4888e38cec0", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "19989ff7d91b4262b2b833731e8f51e9", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b74590f1b8ae44a4a78395191a061b43", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5cbfc80757f34cebb877803e373b2c74", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f6a873b8ac5e4398bf3c649d67490dd9", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f168cb69ccd443048e34b90ce6ccd08c", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Once you are happy with your selections
+Move to the next cell to begin gathering files and interpolating
+Note that the MSC Datamart only has data from the previous 30 days
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;If you are running a very up-to-date model and this breaks...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The latest model data might not be in, try going one model run previous&quot;</span><span class="p">)</span>
+<span class="n">model_files</span> <span class="o">=</span> <span class="n">set_filenames</span><span class="p">(</span><span class="n">model_dropdown</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">model_run</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                            <span class="n">year_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">month_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                            <span class="n">day_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="n">hour_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                            <span class="n">forecast_slider</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                            <span class="n">time_offset</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+If you are running a very up-to-date model and this breaks...
+The latest model data might not be in, try going one model run previous
+Selected Model: rdps
+Selected Model Run: auto
+Selected Date: 2025-08-14--09
+Forecast Length: 2 hours
+The model starts at
+2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2
+2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2
+2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2
+2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2
+2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2
+2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2
+2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2
+2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2
+2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2
+2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># determine what kind of interpolation do you want to do</span>
+<span class="n">interp_dropdown</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
+    <span class="n">options</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;KDTree&#39;</span><span class="p">,</span> <span class="s1">&#39;Linear&#39;</span><span class="p">],</span>
+    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;KDTree&#39;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Interpolation Method:&#39;</span><span class="p">,</span>
+    <span class="n">style</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KDTree finds the nearest neighbour on the model grid - very fast ~3mins&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear interpolation is much slower, a 30hr forecast will take ~30mins to process the data&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In my experience the absolute difference between methods is ~0.4degC for temp&quot;</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">interp_dropdown</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+KDTree finds the nearest neighbour on the model grid - very fast ~3mins
+Linear interpolation is much slower, a 30hr forecast will take ~30mins to process the data
+In my experience the absolute difference between methods is ~0.4degC for temp
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "092920aff46547968cd4cbe4dd7e5f34", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the dataframe to store the interpolate variables</span>
+<span class="c1"># following the example provided at:</span>
+<span class="c1"># https://spotwx.com/products/grib_index.php?model=hrdps_1km_west&amp;lat=50.80476&amp;lon=-116.82362&amp;tz=America/Edmonton&amp;display=table_prometheus</span>
+<span class="c1"># open the prometheus json file to help with creating the</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;prometheus_vars.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">prometheus_vars</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+
+<span class="n">all_final_vars</span> <span class="o">=</span> <span class="n">prometheus_vars</span><span class="p">[</span><span class="s2">&quot;required_vars&quot;</span><span class="p">]</span>
+<span class="n">dynamic_vars</span> <span class="o">=</span> <span class="n">prometheus_vars</span><span class="p">[</span><span class="s2">&quot;eccc_equivalents&quot;</span><span class="p">]</span>
+
+<span class="n">output_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">all_final_vars</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1"># now deal with the indexes - fill the HOURLY and HOUR columns</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">model_files</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+
+<span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;HOURLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span>
+<span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;HOUR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span>
+<span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;temp_datetime&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">just_date</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># change datetime object to dd/mm/yy format</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">/%m/%Y&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">just_hour</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># grab just the hour of the datetime object</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">hour</span>
+
+<span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;HOURLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;HOURLY&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">just_date</span><span class="p">)</span>
+<span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;HOUR&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;HOUR&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">just_hour</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">output_df</span><span class="p">)</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+       HOURLY  HOUR TEMP   RH   WD   WS PRECIP       temp_datetime
+0  14/08/2025     3  NaN  NaN  NaN  NaN    NaN 2025-08-14 03:00:00
+1  14/08/2025     4  NaN  NaN  NaN  NaN    NaN 2025-08-14 04:00:00
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the goejson file with the NFDB polygons</span>
-<span class="n">polygons</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s1">&#39;Canada_perimeters.geojson&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop through the model_files DataFrame and download each file</span>
+<span class="n">new_row</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">looptime</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>  <span class="c1"># hacky workaround for my dataframe population, im not sorry, just lazy</span>
 
-<span class="c1"># drop a coupole columns that are not needed</span>
-<span class="n">perimeters</span> <span class="o">=</span> <span class="n">polygons</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FIRSTDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;LASTDATE&#39;</span><span class="p">,</span> <span class="s1">&#39;CONSIS_ID&#39;</span><span class="p">])</span>
+<span class="c1"># loop through the required vars</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dynamic_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">())):</span>
+    <span class="n">ec_var</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dynamic_vars</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="n">ii</span><span class="p">]</span>
+    <span class="n">prom_var</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dynamic_vars</span><span class="o">.</span><span class="n">values</span><span class="p">())[</span><span class="n">ii</span><span class="p">]</span>
 
-<span class="c1"># initialize a folium map</span>
-<span class="n">m</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Map</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">[</span><span class="mi">52</span><span class="p">,</span> <span class="o">-</span><span class="mi">120</span><span class="p">],</span>
-               <span class="n">zoom_start</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-               <span class="n">tiles</span><span class="o">=</span><span class="s1">&#39;OpenStreetMap&#39;</span><span class="p">)</span>
+    <span class="c1"># just grab the dataframe for one variable then populate that column of the final</span>
+    <span class="c1"># prometheus dataframe - I dont want to hear it...</span>
+    <span class="n">spec_model_files</span> <span class="o">=</span> <span class="n">model_files</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">model_files</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">ec_var</span><span class="p">]</span>
 
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">spec_model_files</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">output_file</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span>
+        <span class="n">file_url</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;full_path&#39;</span><span class="p">]</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;datetime&quot;</span><span class="p">]</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span>
 
-<span class="c1"># add the polygons to the map</span>
-<span class="n">folium</span><span class="o">.</span><span class="n">GeoJson</span><span class="p">(</span>
-    <span class="n">perimeters</span><span class="p">,</span>
-    <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NFDB Polygons&#39;</span><span class="p">,</span>
-    <span class="n">style_function</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s1">&#39;fillColor&#39;</span><span class="p">:</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;weight&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-        <span class="s1">&#39;fillOpacity&#39;</span><span class="p">:</span> <span class="mf">0.6</span>
-    <span class="p">}</span>
-<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
 
-<span class="c1"># display the layer switcher widget</span>
-<span class="n">folium</span><span class="o">.</span><span class="n">LayerControl</span><span class="p">()</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+        <span class="n">download_data</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Please Click on your location on the coordinates of your choice to generate a coordinate pair:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">interp_dropdown</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">interp_dropdown</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+
+            <span class="n">value</span> <span class="o">=</span> <span class="n">KDTree_interpolate_grib2_to_point</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./temp/</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="n">interp_dropdown</span> <span class="o">==</span> <span class="n">interp_dropdown</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+
+            <span class="n">value</span> <span class="o">=</span> <span class="n">GRID_interpolate_grib2_to_point</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./temp/</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
+
+        <span class="c1">#print(f&quot;The variable is: {var} and  has a value of {value}&quot;)</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">output_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;temp_datetime&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prom_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">init</span> <span class="o">=</span> <span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;temp_datetime&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y_%m_</span><span class="si">%d</span><span class="s2">_%h&quot;</span><span class="p">)</span>
+<span class="n">output_df</span> <span class="o">=</span> <span class="n">output_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;temp_datetime&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">output_df</span><span class="p">)</span>
+
+<span class="n">output_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./output/</span><span class="si">{</span><span class="n">init</span><span class="si">}</span><span class="s2">_prometheus_data_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">forecast_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># save the map to an HTML file</span>
-<span class="n">m</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;nfdb_polygons_map.html&#39;</span><span class="p">)</span>
-<br/></pre></div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
 </div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 03:00:00 t2m 282.83365
+5
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 04:00:00 t2m 282.4765
+1
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 03:00:00 r2 78.413635
+6
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 04:00:00 r2 79.94868
+3
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 03:00:00 wdir10 187.0
+8
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 04:00:00 wdir10 163.1
+2
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 03:00:00 si10 0.97
+7
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 04:00:00 si10 0.96
+4
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 03:00:00 unknown 0.0
+9
+https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2
+File downloaded successfully: 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
+Commence interpolation
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
+To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
+To opt-in to future behavior, set `decode_timedelta=False`.
+  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2025-08-14 04:00:00 unknown 0.0
+       HOURLY  HOUR        TEMP         RH          WD    WS PRECIP
+0  14/08/2025     3  282.829987  78.410004       187.0  0.97    0.0
+1  14/08/2025     4  282.480011  79.949997  163.100006  0.96    0.0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 42</span>
+<span class="ansi-green-fg">     39</span> output_df = output_df.drop(columns=[<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">temp_datetime</span><span class="ansi-yellow-fg">&#39;</span>])
+<span class="ansi-green-fg">     40</span> <span style="color: rgb(0,135,0)">print</span>(output_df)
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">42</span> <span class="ansi-yellow-bg">output_df</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">to_csv</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">f</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">{</span><span class="ansi-yellow-bg">init</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">}</span><span class="ansi-yellow-fg ansi-yellow-bg">_prometheus_data_</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">{</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">str</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">forecast_slider</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">}</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\util\_decorators.py:333</span>, in <span class="ansi-cyan-fg">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-fg">    327</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">len</span>(args) &gt; num_allow_args:
+<span class="ansi-green-fg">    328</span>     warnings.warn(
+<span class="ansi-green-fg">    329</span>         msg.format(arguments=_format_argument_list(allow_args)),
+<span class="ansi-green-fg">    330</span>         <span class="ansi-bold" style="color: rgb(215,95,95)">FutureWarning</span>,
+<span class="ansi-green-fg">    331</span>         stacklevel=find_stack_level(),
+<span class="ansi-green-fg">    332</span>     )
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">333</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\core\generic.py:3986</span>, in <span class="ansi-cyan-fg">NDFrame.to_csv</span><span class="ansi-blue-fg">(self, path_or_buf, sep, na_rep, float_format, columns, header, index, index_label, mode, encoding, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, decimal, errors, storage_options)</span>
+<span class="ansi-green-fg">   3975</span> df = <span style="color: rgb(0,135,0)">self</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(<span style="color: rgb(0,135,0)">self</span>, ABCDataFrame) <span class="ansi-bold" style="color: rgb(0,135,0)">else</span> <span style="color: rgb(0,135,0)">self</span>.to_frame()
+<span class="ansi-green-fg">   3977</span> formatter = DataFrameFormatter(
+<span class="ansi-green-fg">   3978</span>     frame=df,
+<span class="ansi-green-fg">   3979</span>     header=header,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   3983</span>     decimal=decimal,
+<span class="ansi-green-fg">   3984</span> )
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3986</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">DataFrameRenderer</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">formatter</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">to_csv</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">   3987</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">path_or_buf</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3988</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">lineterminator</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">lineterminator</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3989</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">sep</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">sep</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3990</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3991</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3992</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3993</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">quoting</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">quoting</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3994</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3995</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">index_label</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">index_label</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3996</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3997</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">chunksize</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">chunksize</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3998</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">quotechar</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">quotechar</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   3999</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">date_format</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">date_format</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   4000</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">doublequote</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">doublequote</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   4001</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">escapechar</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">escapechar</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   4002</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">   4003</span> <span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\io\formats\format.py:1014</span>, in <span class="ansi-cyan-fg">DataFrameRenderer.to_csv</span><span class="ansi-blue-fg">(self, path_or_buf, encoding, sep, columns, index_label, mode, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, errors, storage_options)</span>
+<span class="ansi-green-fg">    993</span>     created_buffer = <span class="ansi-bold" style="color: rgb(0,135,0)">False</span>
+<span class="ansi-green-fg">    995</span> csv_formatter = CSVFormatter(
+<span class="ansi-green-fg">    996</span>     path_or_buf=path_or_buf,
+<span class="ansi-green-fg">    997</span>     lineterminator=lineterminator,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   1012</span>     formatter=<span style="color: rgb(0,135,0)">self</span>.fmt,
+<span class="ansi-green-fg">   1013</span> )
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1014</span> <span class="ansi-yellow-bg">csv_formatter</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   1016</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> created_buffer:
+<span class="ansi-green-fg">   1017</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">assert</span> <span style="color: rgb(0,135,0)">isinstance</span>(path_or_buf, StringIO)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\io\formats\csvs.py:251</span>, in <span class="ansi-cyan-fg">CSVFormatter.save</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-fg">    247</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">    248</span> <span class="ansi-yellow-fg">Create the writer &amp; save.</span>
+<span class="ansi-green-fg">    249</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">    250</span> <span style="color: rgb(95,135,135)"># apply compression and byte/text conversion</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">251</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span class="ansi-yellow-bg">get_handle</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    252</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">filepath_or_buffer</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    253</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    254</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    255</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    256</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    257</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    258</span> <span class="ansi-yellow-bg">)</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> handles:
+<span class="ansi-green-fg">    259</span>     <span style="color: rgb(95,135,135)"># Note: self.encoding is irrelevant here</span>
+<span class="ansi-green-fg">    260</span>     <span style="color: rgb(0,135,0)">self</span>.writer = csvlib.writer(
+<span class="ansi-green-fg">    261</span>         handles.handle,
+<span class="ansi-green-fg">    262</span>         lineterminator=<span style="color: rgb(0,135,0)">self</span>.lineterminator,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    267</span>         quotechar=<span style="color: rgb(0,135,0)">self</span>.quotechar,
+<span class="ansi-green-fg">    268</span>     )
+<span class="ansi-green-fg">    270</span>     <span style="color: rgb(0,135,0)">self</span>._save()
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\io\common.py:873</span>, in <span class="ansi-cyan-fg">get_handle</span><span class="ansi-blue-fg">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="ansi-green-fg">    868</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> <span style="color: rgb(0,135,0)">isinstance</span>(handle, <span style="color: rgb(0,135,0)">str</span>):
+<span class="ansi-green-fg">    869</span>     <span style="color: rgb(95,135,135)"># Check whether the filename is to be opened in binary mode.</span>
+<span class="ansi-green-fg">    870</span>     <span style="color: rgb(95,135,135)"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="ansi-green-fg">    871</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> ioargs.encoding <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">b</span><span class="ansi-yellow-fg">&#34;</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> ioargs.mode:
+<span class="ansi-green-fg">    872</span>         <span style="color: rgb(95,135,135)"># Encoding</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">873</span>         handle = <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">open</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    874</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    875</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">ioargs</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    876</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ioargs</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    877</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    878</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    879</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    880</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    881</span>         <span style="color: rgb(95,135,135)"># Binary mode</span>
+<span class="ansi-green-fg">    882</span>         handle = <span style="color: rgb(0,135,0)">open</span>(handle, ioargs.mode)
+
+<span class="ansi-red-fg">OSError</span>: [Errno 22] Invalid argument: &#39;2025-08-14 03:00:00_prometheus_data_2&#39;
+</pre></div></div>
 </div>
 </section>
 
-
-          </div>
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
           
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
         </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="Main">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">Prometheus_Interp</a></h1>
-
-
-
-
-
-
-
-
-
-<search id="searchbox" style="display: none" role="search">
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</search>
-<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#"># User Input for a Prometheus Run</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Prometheus Interpolation Documentation</a></li>
-  </ul></li>
-</ul>
-</div>
-
-
-
-
-
-
-
-
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Buchart
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
         </div>
-      </div>
-      <div class="clearer"></div>
+        
+      </footer>
     </div>
-    <div class="footer">
-      &#169;2025, Buchart.
+    <aside class="toc-drawer no-toc">
       
-      |
-      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.1.3</a>
-      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
       
-      |
-      <a href="_sources/define_vars.ipynb.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
-    
-
-    
-  </body>
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=2709fde1"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    </body>
 </html>
