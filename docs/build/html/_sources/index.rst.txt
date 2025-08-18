@@ -6,10 +6,7 @@
 Prometheus Interpolation Documentation
 ==========================================
 
-A simple tool to interpolate ECCC grib data to a specified point. Data comes from `<https://eccc-msc.github.io/msc-animet/>`.
-.. image:: https://img.shields.io/badge/License-MIT-blue.svg
-   :target: https://opensource.org/license/mit/
-
+A simple tool to interpolate ECCC grib data to a specified point. Data comes from `https://eccc-msc.github.io/msc-animet`.
 
 .. toctree::
    :maxdepth: 2
@@ -17,3 +14,5 @@ A simple tool to interpolate ECCC grib data to a specified point. Data comes fro
 
    define_vars
    python_environment
+
+* :ref:`search`
