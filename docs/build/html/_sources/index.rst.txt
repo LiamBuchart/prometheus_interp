@@ -6,9 +6,9 @@
 Prometheus Interpolation Documentation
 ==========================================
 
-Add your content using ``reStructuredText`` syntax. See the
-`reStructuredText <https://www.sphinx-doc.org/en/master/usage/restructuredtext/index.html>`_
-documentation for details.
+A simple tool to interpolate ECCC grib data to a specified point. Data comes from `<https://eccc-msc.github.io/msc-animet/>`.
+.. image:: https://img.shields.io/badge/License-MIT-blue.svg
+   :target: https://opensource.org/license/mit/
 
 
 .. toctree::
@@ -16,4 +16,4 @@ documentation for details.
    :caption: Contents:
 
    define_vars
-   python_environment "Installation"
+   python_environment

@@ -3,7 +3,7 @@
 ## Install
 
 Go to 
-(https://www.anaconda.com/download)
+`<https://www.anaconda.com/download>`
 follow the instruction to download Anaconda on your machine.
 
 ## Fork the repository 

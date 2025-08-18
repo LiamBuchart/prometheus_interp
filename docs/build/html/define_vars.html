@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Prometheus Interpolation Documentation" href="index.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Setup" href="python_environment.html" /><link rel="prev" title="Prometheus Interpolation Documentation" href="index.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
         <title># User Input for a Prometheus Run - Prometheus_Interp 0.1 documentation</title>
@@ -203,6 +203,7 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#"># User Input for a Prometheus Run</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_environment.html">Setup</a></li>
 </ul>
 
 </div>
@@ -393,7 +394,7 @@ The final coordinates you have selected are: [62.05448866672659, -117.1530594247
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># now select model and dates to download ECCC data</span>
@@ -450,9 +451,9 @@ The final coordinates you have selected are: [62.05448866672659, -117.1530594247
 
 <span class="n">forecast_slider</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">IntSlider</span><span class="p">(</span>
     <span class="n">value</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span>
-    <span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 24</span>
-    <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># 72</span>
-    <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># 6</span>
+    <span class="nb">min</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span>  <span class="c1"># 24</span>
+    <span class="nb">max</span><span class="o">=</span><span class="mi">72</span><span class="p">,</span>  <span class="c1"># 72</span>
+    <span class="n">step</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>  <span class="c1"># 6</span>
     <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Forecast Length (hours):&#39;</span><span class="p">,</span>
     <span class="n">continuous_update</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="n">style</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
@@ -623,7 +624,7 @@ In my experience the absolute difference between methods is ~0.4degC for temp
 <script type="application/vnd.jupyter.widget-view+json">{"model_id": "092920aff46547968cd4cbe4dd7e5f34", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the dataframe to store the interpolate variables</span>
@@ -671,7 +672,7 @@ In my experience the absolute difference between methods is ~0.4degC for temp
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop through the model_files DataFrame and download each file</span>
@@ -948,7 +949,7 @@ To opt-in to future behavior, set `decode_timedelta=False`.
   vars, attrs, coord_names = xr.conventions.decode_cf_variables(
 </pre></div></div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
@@ -959,105 +960,6 @@ To opt-in to future behavior, set `decode_timedelta=False`.
 1  14/08/2025     4  282.480011  79.949997  163.100006  0.96    0.0
 </pre></div></div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 42</span>
-<span class="ansi-green-fg">     39</span> output_df = output_df.drop(columns=[<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">temp_datetime</span><span class="ansi-yellow-fg">&#39;</span>])
-<span class="ansi-green-fg">     40</span> <span style="color: rgb(0,135,0)">print</span>(output_df)
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">42</span> <span class="ansi-yellow-bg">output_df</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">to_csv</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">f</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">{</span><span class="ansi-yellow-bg">init</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">}</span><span class="ansi-yellow-fg ansi-yellow-bg">_prometheus_data_</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">{</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">str</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">forecast_slider</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">value</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,135)">}</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\util\_decorators.py:333</span>, in <span class="ansi-cyan-fg">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
-<span class="ansi-green-fg">    327</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">len</span>(args) &gt; num_allow_args:
-<span class="ansi-green-fg">    328</span>     warnings.warn(
-<span class="ansi-green-fg">    329</span>         msg.format(arguments=_format_argument_list(allow_args)),
-<span class="ansi-green-fg">    330</span>         <span class="ansi-bold" style="color: rgb(215,95,95)">FutureWarning</span>,
-<span class="ansi-green-fg">    331</span>         stacklevel=find_stack_level(),
-<span class="ansi-green-fg">    332</span>     )
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">333</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">func</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\core\generic.py:3986</span>, in <span class="ansi-cyan-fg">NDFrame.to_csv</span><span class="ansi-blue-fg">(self, path_or_buf, sep, na_rep, float_format, columns, header, index, index_label, mode, encoding, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, decimal, errors, storage_options)</span>
-<span class="ansi-green-fg">   3975</span> df = <span style="color: rgb(0,135,0)">self</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> <span style="color: rgb(0,135,0)">isinstance</span>(<span style="color: rgb(0,135,0)">self</span>, ABCDataFrame) <span class="ansi-bold" style="color: rgb(0,135,0)">else</span> <span style="color: rgb(0,135,0)">self</span>.to_frame()
-<span class="ansi-green-fg">   3977</span> formatter = DataFrameFormatter(
-<span class="ansi-green-fg">   3978</span>     frame=df,
-<span class="ansi-green-fg">   3979</span>     header=header,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   3983</span>     decimal=decimal,
-<span class="ansi-green-fg">   3984</span> )
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3986</span> <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> <span class="ansi-yellow-bg">DataFrameRenderer</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">formatter</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">to_csv</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">   3987</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">path_or_buf</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3988</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">lineterminator</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">lineterminator</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3989</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">sep</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">sep</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3990</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3991</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3992</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3993</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">quoting</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">quoting</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3994</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">columns</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3995</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">index_label</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">index_label</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3996</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3997</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">chunksize</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">chunksize</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3998</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">quotechar</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">quotechar</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   3999</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">date_format</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">date_format</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   4000</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">doublequote</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">doublequote</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   4001</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">escapechar</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">escapechar</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   4002</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">   4003</span> <span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\io\formats\format.py:1014</span>, in <span class="ansi-cyan-fg">DataFrameRenderer.to_csv</span><span class="ansi-blue-fg">(self, path_or_buf, encoding, sep, columns, index_label, mode, compression, quoting, quotechar, lineterminator, chunksize, date_format, doublequote, escapechar, errors, storage_options)</span>
-<span class="ansi-green-fg">    993</span>     created_buffer = <span class="ansi-bold" style="color: rgb(0,135,0)">False</span>
-<span class="ansi-green-fg">    995</span> csv_formatter = CSVFormatter(
-<span class="ansi-green-fg">    996</span>     path_or_buf=path_or_buf,
-<span class="ansi-green-fg">    997</span>     lineterminator=lineterminator,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   1012</span>     formatter=<span style="color: rgb(0,135,0)">self</span>.fmt,
-<span class="ansi-green-fg">   1013</span> )
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1014</span> <span class="ansi-yellow-bg">csv_formatter</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">save</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">   1016</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> created_buffer:
-<span class="ansi-green-fg">   1017</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">assert</span> <span style="color: rgb(0,135,0)">isinstance</span>(path_or_buf, StringIO)
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\io\formats\csvs.py:251</span>, in <span class="ansi-cyan-fg">CSVFormatter.save</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-fg">    247</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">    248</span> <span class="ansi-yellow-fg">Create the writer &amp; save.</span>
-<span class="ansi-green-fg">    249</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
-<span class="ansi-green-fg">    250</span> <span style="color: rgb(95,135,135)"># apply compression and byte/text conversion</span>
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">251</span> <span class="ansi-bold" style="color: rgb(0,135,0)">with</span> <span class="ansi-yellow-bg">get_handle</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">    252</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">filepath_or_buffer</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    253</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    254</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    255</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    256</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">compression</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    257</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg" style="color: rgb(0,135,0)">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">storage_options</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    258</span> <span class="ansi-yellow-bg">)</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> handles:
-<span class="ansi-green-fg">    259</span>     <span style="color: rgb(95,135,135)"># Note: self.encoding is irrelevant here</span>
-<span class="ansi-green-fg">    260</span>     <span style="color: rgb(0,135,0)">self</span>.writer = csvlib.writer(
-<span class="ansi-green-fg">    261</span>         handles.handle,
-<span class="ansi-green-fg">    262</span>         lineterminator=<span style="color: rgb(0,135,0)">self</span>.lineterminator,
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    267</span>         quotechar=<span style="color: rgb(0,135,0)">self</span>.quotechar,
-<span class="ansi-green-fg">    268</span>     )
-<span class="ansi-green-fg">    270</span>     <span style="color: rgb(0,135,0)">self</span>._save()
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\pandas\io\common.py:873</span>, in <span class="ansi-cyan-fg">get_handle</span><span class="ansi-blue-fg">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="ansi-green-fg">    868</span> <span class="ansi-bold" style="color: rgb(0,135,0)">elif</span> <span style="color: rgb(0,135,0)">isinstance</span>(handle, <span style="color: rgb(0,135,0)">str</span>):
-<span class="ansi-green-fg">    869</span>     <span style="color: rgb(95,135,135)"># Check whether the filename is to be opened in binary mode.</span>
-<span class="ansi-green-fg">    870</span>     <span style="color: rgb(95,135,135)"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
-<span class="ansi-green-fg">    871</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> ioargs.encoding <span class="ansi-bold" style="color: rgb(175,0,255)">and</span> <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">b</span><span class="ansi-yellow-fg">&#34;</span> <span class="ansi-bold" style="color: rgb(175,0,255)">not</span> <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> ioargs.mode:
-<span class="ansi-green-fg">    872</span>         <span style="color: rgb(95,135,135)"># Encoding</span>
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">873</span>         handle = <span class="ansi-yellow-bg" style="color: rgb(0,135,0)">open</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">    874</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">handle</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    875</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">ioargs</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">mode</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    876</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ioargs</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">encoding</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    877</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">errors</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    878</span> <span class="ansi-yellow-bg">            </span><span class="ansi-yellow-bg">newline</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-fg ansi-yellow-bg">&#34;</span><span class="ansi-yellow-bg">,</span>
-<span class="ansi-green-fg">    879</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    880</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">else</span>:
-<span class="ansi-green-fg">    881</span>         <span style="color: rgb(95,135,135)"># Binary mode</span>
-<span class="ansi-green-fg">    882</span>         handle = <span style="color: rgb(0,135,0)">open</span>(handle, ioargs.mode)
-
-<span class="ansi-red-fg">OSError</span>: [Errno 22] Invalid argument: &#39;2025-08-14 03:00:00_prometheus_data_2&#39;
-</pre></div></div>
-</div>
 </section>
 
         </article>
@@ -1065,7 +967,15 @@ To opt-in to future behavior, set `decode_timedelta=False`.
       <footer>
         
         <div class="related-pages">
-          
+          <a class="next-page" href="python_environment.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Setup</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
           <a class="prev-page" href="index.html">
               <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
