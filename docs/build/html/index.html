@@ -202,7 +202,7 @@
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="define_vars.html">User Input for a Prometheus Run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_environment.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
 </ul>
 
 </div>
@@ -246,42 +246,16 @@
           <section id="prometheus-interpolation-documentation">
 <h1>Prometheus Interpolation Documentation<a class="headerlink" href="#prometheus-interpolation-documentation" title="Link to this heading">¶</a></h1>
 <p>A simple tool to interpolate ECCC grib data to a specified point. Data comes from <cite>https://eccc-msc.github.io/msc-animet</cite>.</p>
-<p># Setup</p>
-<p>## Install</p>
-<p>Go to
-<cite>&lt;https://www.anaconda.com/download&gt;</cite>
-follow the instruction to download Anaconda on your machine.</p>
-<p>## Fork the repository</p>
-<p><cite>git clone https://github.com/LiamBuchart/prometheus_interp.git</cite></p>
-<p>Now navigate to the <cite>docs/source</cite> directory. The jupyter notebook which contains all that you need is named <cite>define_vars/ipynb</cite>. This notebook calls all other python scripts that are used. The directory structure is dictated by the use of sphinx and how I want to host it. Sorry that its messy, its who I am.</p>
-<p>## Create a conda environment</p>
-<p><cite>conda create –name &lt;my-env&gt;</cite>
-The &lt;my-env&gt; can be whatever name that you want for the conda environment. Follow the prompts and accept any terms and click <cite>y</cite> to install the environment. Finally, activate the environment with:
-<cite>conda activate &lt;my-env&gt;</cite></p>
-<p>### Install the necessary packages</p>
-<p>Use the <cite>conda install -c conda-forge</cite> extension to install the following required packages:
-&gt; numpy pandas
-&gt; geopandas
-&gt; scipy
-&gt; ipyleaflet
-&gt; ipywidgets
-&gt; xarray dask netcdf4 bottleneck
-&gt; cfgrib</p>
-<p>In general, the order that you install these packages does not matter execpt for two cases. Ensure that both <cite>numpy</cite> and <cite>pandas</cite> are installed before <cite>xarray</cite>. Ensure that <cite>xarray</cite> is installed before <cite>cfgrib</cite>.</p>
-<p>## Running</p>
-<p>The <cite>define_vars</cite> script is designed to be run cell by cell. There are some written instructions to help with running each cell. Modify the widgets for your run and make sure to click on the interactive map to select the location for interpolation.</p>
-<p>## Completion</p>
-<p>When finished make sure you deactivate the conda environment</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="define_vars.html">User Input for a Prometheus Run</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_environment.html">Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="python_environment.html#install">Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_environment.html#fork-the-repository">Fork the repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_environment.html#create-a-conda-environment">Create a conda environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_environment.html#running">Running</a></li>
-<li class="toctree-l2"><a class="reference internal" href="python_environment.html#completion">Completion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#fork-the-repository">Fork the repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#create-a-conda-environment">Create a conda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#running">Running</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#completion">Completion</a></li>
 </ul>
 </li>
 </ul>

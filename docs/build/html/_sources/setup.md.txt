@@ -8,7 +8,8 @@ follow the instruction to download Anaconda on your machine.
 
 ## Fork the repository 
 
-`git clone https://github.com/LiamBuchart/prometheus_interp.git`
+    // from my personal github repo
+    git fork https://github.com/LiamBuchart/prometheus_interp.git
 
 Now navigate to the `docs/source` directory. The jupyter notebook which contains all that you need is named `define_vars/ipynb`. This notebook calls all other python scripts that are used. The directory structure is dictated by the use of sphinx and how I want to host it. Sorry that its messy, its who I am. 
 
@@ -37,5 +38,6 @@ The `define_vars` script is designed to be run cell by cell. There are some writ
 
 ## Completion
 
-
 When finished make sure you deactivate the conda environment
+
+    `conda deactivate <my-env>`
