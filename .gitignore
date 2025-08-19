@@ -4,8 +4,8 @@
 *.shp
 *.shx
 
-# may be neccessary? not sure 
-#build/
+# grib files too large
+*.grib2
 
 # my map is too large
 *map.html
