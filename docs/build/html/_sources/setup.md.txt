@@ -25,13 +25,13 @@ The `<my-env>` can be whatever name that you want for the conda environment. Fol
 
 Use the `conda install -c conda-forge` extension to install the following required packages:
 
-> numpy pandas |
-> geopandas |
-> scipy |
-> ipyleaflet |
-> ipywidgets |
-> xarray dask netcdf4 bottleneck |
-> cfgrib |
+    numpy pandas 
+    geopandas 
+    scipy 
+    ipyleaflet 
+    ipywidgets 
+    xarray dask netcdf4 bottleneck 
+    cfgrib 
 
 In general, the order that you install these packages does not matter execpt for two cases. Ensure that both `numpy` and `pandas` are installed before `xarray`. Ensure that `xarray` is installed before `cfgrib`.
 
@@ -44,3 +44,5 @@ The `define_vars` script is designed to be run cell by cell. There are some writ
 When finished make sure you deactivate the conda environment
 
     `conda deactivate <my-env>`
+
+The final .csv file will be in the `output` folder. The naming convention is `dd/mm/yyyy_prometheus_slider_<forecast_length (in hours)>`. 

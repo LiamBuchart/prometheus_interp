@@ -271,15 +271,15 @@ git fork https://github.com/LiamBuchart/prometheus_interp.git
 <section id="install-the-necessary-packages">
 <h3>Install the necessary packages<a class="headerlink" href="#install-the-necessary-packages" title="Link to this heading">¶</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span></code> extension to install the following required packages:</p>
-<blockquote>
-<div><p>numpy pandas |
-geopandas |
-scipy |
-ipyleaflet |
-ipywidgets |
-xarray dask netcdf4 bottleneck |
-cfgrib |</p>
-</div></blockquote>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>numpy pandas 
+geopandas 
+scipy 
+ipyleaflet 
+ipywidgets 
+xarray dask netcdf4 bottleneck 
+cfgrib 
+</pre></div>
+</div>
 <p>In general, the order that you install these packages does not matter execpt for two cases. Ensure that both <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> are installed before <code class="docutils literal notranslate"><span class="pre">xarray</span></code>. Ensure that <code class="docutils literal notranslate"><span class="pre">xarray</span></code> is installed before <code class="docutils literal notranslate"><span class="pre">cfgrib</span></code>.</p>
 </section>
 </section>
@@ -293,6 +293,7 @@ cfgrib |</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`conda deactivate &lt;my-env&gt;`
 </pre></div>
 </div>
+<p>The final .csv file will be in the <code class="docutils literal notranslate"><span class="pre">output</span></code> folder. The naming convention is <code class="docutils literal notranslate"><span class="pre">dd/mm/yyyy_prometheus_slider_&lt;forecast_length</span> <span class="pre">(in</span> <span class="pre">hours)&gt;</span></code>.</p>
 </section>
 </section>
 
