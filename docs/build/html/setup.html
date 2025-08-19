@@ -257,24 +257,28 @@ then follow the instruction to download Anaconda on your machine.</p>
 git fork https://github.com/LiamBuchart/prometheus_interp.git
 </pre></div>
 </div>
-<p>Now navigate to the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> directory. The jupyter notebook which contains all that you need is named <code class="docutils literal notranslate"><span class="pre">define_vars/ipynb</span></code>. This notebook calls all other python scripts that are used. The directory structure is dictated by the use of sphinx and how I want to host it. Sorry that its messy, its who I am.</p>
+<p>Now navigate to the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> directory. The jupyter notebook which contains all that you need is named <code class="docutils literal notranslate"><span class="pre">define_vars.ipynb</span></code>. This notebook calls all other python scripts that are used. The directory structure is dictated by the use of sphinx and how I want to host it. Sorry that its messy, its who I am.</p>
 </section>
 <section id="create-a-conda-environment">
 <h2>Create a conda environment<a class="headerlink" href="#create-a-conda-environment" title="Link to this heading">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span> <span class="pre">&lt;my-env&gt;</span></code>
-The <my-env> can be whatever name that you want for the conda environment. Follow the prompts and accept any terms and click <code class="docutils literal notranslate"><span class="pre">y</span></code> to install the environment. Finally, activate the environment with:
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">&lt;my-env&gt;</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`conda create --name &lt;my-env&gt;` 
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;my-env&gt;</span></code> can be whatever name that you want for the conda environment. Follow the prompts and accept any terms and click <code class="docutils literal notranslate"><span class="pre">y</span></code> to install the environment. Finally, activate the environment with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`conda activate &lt;my-env&gt;`
+</pre></div>
+</div>
 <section id="install-the-necessary-packages">
 <h3>Install the necessary packages<a class="headerlink" href="#install-the-necessary-packages" title="Link to this heading">¶</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span></code> extension to install the following required packages:</p>
 <blockquote>
-<div><p>numpy pandas
-geopandas
-scipy
-ipyleaflet
-ipywidgets
-xarray dask netcdf4 bottleneck
-cfgrib</p>
+<div><p>numpy pandas |
+geopandas |
+scipy |
+ipyleaflet |
+ipywidgets |
+xarray dask netcdf4 bottleneck |
+cfgrib |</p>
 </div></blockquote>
 <p>In general, the order that you install these packages does not matter execpt for two cases. Ensure that both <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> are installed before <code class="docutils literal notranslate"><span class="pre">xarray</span></code>. Ensure that <code class="docutils literal notranslate"><span class="pre">xarray</span></code> is installed before <code class="docutils literal notranslate"><span class="pre">cfgrib</span></code>.</p>
 </section>
