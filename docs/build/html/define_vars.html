@@ -277,8 +277,8 @@
 <br/></pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># run the etl_nfdf_polygons.py script to get the NFDF polygons</span>
@@ -287,8 +287,21 @@
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you only have to run this cell every few hours when new perimeters come in
+Shapefile already exists. Downloading the latest data...
+Downloaded perimeters.shp
+Downloaded perimeters.shx
+Downloaded perimeters.dbf
+Downloaded perimeters.prj
+</pre></div></div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load the GeoJSON file with geopandas</span>
@@ -347,7 +360,7 @@
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-C:\Users\lbuchart\AppData\Local\Temp\ipykernel_37388\131360457.py:14: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
+C:\Users\lbuchart\AppData\Local\Temp\ipykernel_50248\131360457.py:14: DeprecationWarning: The &#39;unary_union&#39; attribute is deprecated, use the &#39;union_all()&#39; method instead.
   center = gdf.geometry.unary_union.centroid.coords[0][::-1]
 </pre></div></div>
 </div>
@@ -365,16 +378,16 @@ Your final click is the selected location, ensure that the marker is moved to wh
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6b0622f971cd485f94a28c5612eb3dad", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "aea59607c9154b4bac959be99ba7a1a0", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "3598c0a596ff4d0cbb3746222781f856", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "cdd66b2ab0e144c4a08bb219b7f163ce", "version_major": 2, "version_minor": 0}</script></div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coords</span> <span class="o">=</span> <span class="n">marker</span><span class="o">.</span><span class="n">location</span>
@@ -385,15 +398,7 @@ Your final click is the selected location, ensure that the marker is moved to wh
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-The final coordinates you have selected are: [62.05448866672659, -117.15305942475538]
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
+<div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
@@ -482,75 +487,8 @@ The final coordinates you have selected are: [62.05448866672659, -117.1530594247
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Requires your initial forecast hour in UTC, and your current timezone offset from UTC..
-please
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "54c9bc54851945eb8c03224ccede3dbd", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "4dca25404e784fbb89a977b59aaa947f", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "55392f061cd145dab6bdf4888e38cec0", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "19989ff7d91b4262b2b833731e8f51e9", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b74590f1b8ae44a4a78395191a061b43", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5cbfc80757f34cebb877803e373b2c74", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f6a873b8ac5e4398bf3c649d67490dd9", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f168cb69ccd443048e34b90ce6ccd08c", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Once you are happy with your selections
-Move to the next cell to begin gathering files and interpolating
-Note that the MSC Datamart only has data from the previous 30 days
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;If you are running a very up-to-date model and this breaks...&quot;</span><span class="p">)</span>
@@ -563,32 +501,8 @@ Note that the MSC Datamart only has data from the previous 30 days
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-If you are running a very up-to-date model and this breaks...
-The latest model data might not be in, try going one model run previous
-Selected Model: rdps
-Selected Model Run: auto
-Selected Date: 2025-08-14--09
-Forecast Length: 2 hours
-The model starts at
-2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2
-2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2
-2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2
-2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2
-2025-08-14 03:00:00 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2
-2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2
-2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2
-2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2
-2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2
-2025-08-14 04:00:00 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># determine what kind of interpolation do you want to do</span>
@@ -599,32 +513,16 @@ The model starts at
     <span class="n">style</span><span class="o">=</span> <span class="p">{</span><span class="s1">&#39;description_width&#39;</span><span class="p">:</span> <span class="s1">&#39;initial&#39;</span><span class="p">}</span>
 <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KDTree finds the nearest neighbour on the model grid - very fast ~3mins&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear interpolation is much slower, a 30hr forecast will take ~30mins to process the data&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;KDTree finds the nearest neighbour on the model grid - fast ~10mins&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear interpolation is much slower, a 30hr forecast will take ~45mins to process the data&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;In my experience the absolute difference between methods is ~0.4degC for temp&quot;</span><span class="p">)</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">interp_dropdown</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-KDTree finds the nearest neighbour on the model grid - very fast ~3mins
-Linear interpolation is much slower, a 30hr forecast will take ~30mins to process the data
-In my experience the absolute difference between methods is ~0.4degC for temp
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "092920aff46547968cd4cbe4dd7e5f34", "version_major": 2, "version_minor": 0}</script></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the dataframe to store the interpolate variables</span>
@@ -661,18 +559,8 @@ In my experience the absolute difference between methods is ~0.4degC for temp
 <br/><br/></pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-       HOURLY  HOUR TEMP   RH   WD   WS PRECIP       temp_datetime
-0  14/08/2025     3  NaN  NaN  NaN  NaN    NaN 2025-08-14 03:00:00
-1  14/08/2025     4  NaN  NaN  NaN  NaN    NaN 2025-08-14 04:00:00
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># loop through the model_files DataFrame and download each file</span>
@@ -707,258 +595,27 @@ In my experience the absolute difference between methods is ~0.4degC for temp
 
             <span class="n">value</span> <span class="o">=</span> <span class="n">GRID_interpolate_grib2_to_point</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./temp/</span><span class="si">{</span><span class="n">output_file</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">coords</span><span class="p">)</span>
 
-        <span class="c1">#print(f&quot;The variable is: {var} and  has a value of {value}&quot;)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The variable is: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2"> and  has a value of </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        <span class="nb">print</span><span class="p">(</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="n">output_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;temp_datetime&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">timestamp</span><span class="p">,</span> <span class="n">prom_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="n">init</span> <span class="o">=</span> <span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;temp_datetime&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y_%m_</span><span class="si">%d</span><span class="s2">_%h&quot;</span><span class="p">)</span>
-<span class="n">output_df</span> <span class="o">=</span> <span class="n">output_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;temp_datetime&#39;</span><span class="p">])</span>
+<span class="n">init</span> <span class="o">=</span> <span class="n">output_df</span><span class="p">[</span><span class="s2">&quot;temp_datetime&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y_%m_</span><span class="si">%d</span><span class="s2">_%H&quot;</span><span class="p">)</span> <span class="c1"># nice initial value</span>
+<span class="n">output_df</span> <span class="o">=</span> <span class="n">output_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;temp_datetime&#39;</span><span class="p">])</span>  <span class="c1"># clean</span>
+<span class="n">output_df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># nice indexing</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">output_df</span><span class="p">)</span>
 
 <span class="n">output_df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./output/</span><span class="si">{</span><span class="n">init</span><span class="si">}</span><span class="s2">_prometheus_data_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">forecast_slider</span><span class="o">.</span><span class="n">value</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
 </div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-0
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">center</span><span class="o">=</span><span class="n">center</span><span class="p">,</span> <span class="n">zoom</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 03:00:00 t2m 282.83365
-5
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_AirTemp_AGL-2m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 04:00:00 t2m 282.4765
-1
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 03:00:00 r2 78.413635
-6
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_RelativeHumidity_AGL-2m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 04:00:00 r2 79.94868
-3
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 03:00:00 wdir10 187.0
-8
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_WindDir_AGL-10m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 04:00:00 wdir10 163.1
-2
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 03:00:00 si10 0.97
-7
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_WindSpeed_AGL-10m_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 04:00:00 si10 0.96
-4
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/003/20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT003H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 03:00:00 unknown 0.0
-9
-https://dd.weather.gc.ca/20250814/WXO-DD/model_rdps/10km/06/004/20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2
-File downloaded successfully: 20250814T06Z_MSC_RDPS_Precip-Accum1h_Sfc_RLatLon0.09_PT004H.grib2, moving to /temp/ ...
-Commence interpolation
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-c:\Users\lbuchart\AppData\Local\anaconda3\envs\prom-env\Lib\site-packages\cfgrib\xarray_plugin.py:131: FutureWarning: In a future version, xarray will not decode the variable &#39;step&#39; into a timedelta64 dtype based on the presence of a timedelta-like &#39;units&#39; attribute by default. Instead it will rely on the presence of a timedelta64 &#39;dtype&#39; attribute, which is now xarray&#39;s default way of encoding timedelta64 values.
-To continue decoding into a timedelta64 dtype, either set `decode_timedelta=True` when opening this dataset, or add the attribute `dtype=&#39;timedelta64[ns]&#39;` to this variable on disk.
-To opt-in to future behavior, set `decode_timedelta=False`.
-  vars, attrs, coord_names = xr.conventions.decode_cf_variables(
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-2025-08-14 04:00:00 unknown 0.0
-       HOURLY  HOUR        TEMP         RH          WD    WS PRECIP
-0  14/08/2025     3  282.829987  78.410004       187.0  0.97    0.0
-1  14/08/2025     4  282.480011  79.949997  163.100006  0.96    0.0
-</pre></div></div>
 </div>
 </section>
 

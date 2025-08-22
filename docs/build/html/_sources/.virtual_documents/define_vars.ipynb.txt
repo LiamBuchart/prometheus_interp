@@ -1,0 +1,279 @@
+
+
+
+# Necessary imports 
+import pandas as pd
+import geopandas as gpd
+import numpy as np
+import matplotlib.pyplot as plt
+import json
+import scipy
+import ipywidgets as widgets
+import requests
+import xarray as xr
+import shutil
+import cfgrib
+
+from ipyleaflet import Map, Marker, GeoJSON
+from ipywidgets import Output
+from IPython.display import display
+from datetime import datetime
+from scipy.interpolate import griddata
+
+from etl_prometheus_data import download_data, KDTree_interpolate_grib2_to_point, GRID_interpolate_grib2_to_point
+from file_funcs import set_filenames
+
+
+
+# run the etl_nfdf_polygons.py script to get the NFDF polygons
+print("Note: you only have to run this cell every few hours when new perimeters come in")
+%run etl_nfdb_polygons.py
+
+
+# Load the GeoJSON file with geopandas
+gdf = gpd.read_file('Canada_perimeters.geojson')
+
+# Ensure CRS is WGS84
+gdf = gdf.to_crs(epsg=4326)
+
+# Optionally drop columns you don't need
+gdf = gdf.drop(columns=['FIRSTDATE', 'LASTDATE', 'CONSIS_ID'])
+
+# Convert to GeoJSON dict
+geojson_data = json.loads(gdf.to_json())
+
+# Center the map on the centroid of all polygons
+center = gdf.geometry.unary_union.centroid.coords[0][::-1]
+m = Map(center=center, zoom=4)
+
+# Add the GeoJSON layer
+geojson_layer = GeoJSON(
+    data=geojson_data,
+    name='NFDB Polygons',
+    style={
+        'color': 'red',
+        'weight': 1,
+        'fillColor': 'orange',
+        'fillOpacity': 0.6
+    }
+)
+m.add_layer(geojson_layer)
+
+# add marker that will be updated on click
+marker = Marker(location=center)    
+m.add_layer(marker)
+
+out = Output()
+
+def handle_map_click(**kwargs):
+    if kwargs.get('type') == 'click':
+        latlon = kwargs.get('coordinates')
+        marker.location = latlon
+        with out:
+            print(f"Clicked location: {latlon}")
+
+m.on_interaction(handle_map_click)
+
+print("Click on the map to get coordinates")
+print("Double-click to zoom in or use the zoom controls")
+print("Your final click is the selected location, ensure that the marker is moved to where you want it")
+display(m, out)
+
+
+coords = marker.location
+print(f"The final coordinates you have selected are: {coords}")
+
+# save the map to an HTML file
+m.save('nfdb_polygons_map.html')
+
+
+# now select model and dates to download ECCC data
+from IPython.display import display
+model_dropdown = widgets.Dropdown(
+    options=['rdps', 'hrdps'],
+    value='rdps',
+    description='Model:',
+)
+
+model_run = widgets.Dropdown(
+    options=['00', '06', '12', '18', "auto"],
+    value='auto',
+    description='Model Initialization Time:',
+    style= {'description_width': 'initial'}
+)
+
+current_year = datetime.now().year
+year_slider = widgets.IntSlider(
+    value=int(current_year),
+    min=2020,
+    max = int(current_year),
+    step=1,
+    description='Year:',
+    continuous_update=False
+)
+
+month_slider = widgets.IntSlider(
+    value=1,
+    min=1,
+    max=12,
+    step=1,
+    description='Month:',
+    continuous_update=False
+)
+
+day_slider = widgets.IntSlider(
+    value=1,
+    min=1, 
+    max=31,
+    step=1,
+    description='Day:',
+    continuous_update=False
+)
+
+hour_slider = widgets.IntSlider(
+    value=0,
+    min=0, 
+    max=23,
+    step=1,
+    description='Hour (UTC):',
+    continuous_update=False
+)
+
+forecast_slider = widgets.IntSlider(
+    value=48,
+    min=24,  # 24
+    max=72,  # 72
+    step=6,  # 6
+    description='Forecast Length (hours):',
+    continuous_update=False,
+    style= {'description_width': 'initial'}
+)
+
+time_offset = widgets.IntSlider(
+    value=6,
+    min=0,
+    max=14,
+    step=1,
+    description='Number of hours behind UTC:',
+    continuous_update=False,
+    style= {'description_width': 'initial'}
+)
+
+# Display the widgets
+print("Requires your initial forecast hour in UTC, and your current timezone offset from UTC..")
+print("please")
+
+display(model_dropdown, model_run, year_slider, month_slider, day_slider, hour_slider, forecast_slider, time_offset)
+
+print("Once you are happy with your selections")
+print("Move to the next cell to begin gathering files and interpolating")
+
+print("Note that the MSC Datamart only has data from the previous 30 days")
+
+
+print("If you are running a very up-to-date model and this breaks...")
+print("The latest model data might not be in, try going one model run previous")
+model_files = set_filenames(model_dropdown.value, model_run.value, 
+                            year_slider.value, month_slider.value, 
+                            day_slider.value, hour_slider.value, 
+                            forecast_slider.value, 
+                            time_offset.value)
+
+
+# determine what kind of interpolation do you want to do
+interp_dropdown = widgets.Dropdown(
+    options=['KDTree', 'Linear'],
+    value='KDTree',
+    description='Interpolation Method:',
+    style= {'description_width': 'initial'}
+)
+
+print("KDTree finds the nearest neighbour on the model grid - fast ~10mins")
+print("Linear interpolation is much slower, a 30hr forecast will take ~45mins to process the data")
+print("In my experience the absolute difference between methods is ~0.4degC for temp")
+
+display(interp_dropdown)
+
+
+# make the dataframe to store the interpolate variables 
+# following the example provided at: 
+# https://spotwx.com/products/grib_index.php?model=hrdps_1km_west&lat=50.80476&lon=-116.82362&tz=America/Edmonton&display=table_prometheus
+# open the prometheus json file to help with creating the 
+with open('prometheus_vars.json', 'r') as f:
+            prometheus_vars = json.load(f)
+
+all_final_vars = prometheus_vars["required_vars"]
+dynamic_vars = prometheus_vars["eccc_equivalents"]
+
+output_df = pd.DataFrame(columns=all_final_vars.values())
+
+# now deal with the indexes - fill the HOURLY and HOUR columns
+times = model_files["datetime"].unique()
+
+output_df["HOURLY"] = times
+output_df["HOUR"] = times
+output_df["temp_datetime"] = times
+
+def just_date(x):
+    # change datetime object to dd/mm/yy format
+    return x.strftime("%d/%m/%Y")
+
+def just_hour(x):
+    # grab just the hour of the datetime object
+    return x.hour
+
+output_df["HOURLY"] = output_df["HOURLY"].apply(just_date)
+output_df["HOUR"] = output_df["HOUR"].apply(just_hour)
+
+print(output_df)
+
+
+
+
+# loop through the model_files DataFrame and download each file
+new_row = {}
+looptime = datetime.now()  # hacky workaround for my dataframe population, im not sorry, just lazy
+
+# loop through the required vars
+for ii in range(len(dynamic_vars.keys())):
+    ec_var = list(dynamic_vars.keys())[ii]
+    prom_var = list(dynamic_vars.values())[ii]
+
+    # just grab the dataframe for one variable then populate that column of the final 
+    # prometheus dataframe - I dont want to hear it...
+    spec_model_files = model_files.loc[model_files["variable"] == ec_var]
+
+    for index, row in spec_model_files.iterrows():
+        output_file = row['file']
+        file_url = row['full_path']
+        timestamp = row["datetime"]
+        var = row["variable"]
+
+        print(index)
+
+        print(file_url, output_file)
+        download_data(file_url, output_file)
+
+        if interp_dropdown.value == interp_dropdown.options[0]:
+        
+            value = KDTree_interpolate_grib2_to_point(f"./temp/{output_file}", var, coords)
+
+        elif interp_dropdown == interp_dropdown.options[1]:
+
+            value = GRID_interpolate_grib2_to_point(f"./temp/{output_file}", var, coords)
+
+        print(f"The variable is: {var} and  has a value of {value}")
+
+        output_df.loc[output_df["temp_datetime"] == timestamp, prom_var] = np.round(np.float32(value), 2)
+
+init = output_df["temp_datetime"][0].strftime("%Y_%m_%d_%H") # nice initial value
+output_df = output_df.drop(columns=['temp_datetime'])  # clean  
+output_df.reset_index(drop=True, inplace=True)  # nice indexing
+print(output_df)
+
+output_df.to_csv(f"./output/{init}_prometheus_data_{str(forecast_slider.value)}")
+      
+
+
+m = Map(center=center, zoom=4)
+display(m)

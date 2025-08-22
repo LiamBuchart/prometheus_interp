@@ -75,6 +75,22 @@ Each cell is numbered. When the cell is running the cell number will change to t
 
 There are some written instructions to help with running each cell. Modify the widgets for your run and make sure to click on the interactive map to select the location for interpolation. 
 
+## Other Methods
+
+If you are absoluely not a VSCode user and would prefer to run in `jupyter notebook` please give it a shot and let me know how it goes. I have had varying degrees of success getting the map to render depending on what machine I am using. 
+
+To run in a local jupyter notebook server first ensure that `nb_conda_kernels` is installed before going further. Next, make sure that your desireed virtual conda virtual environment is running. Then run the following code in your command line:
+
+    python -m ipykernel install --user --name <my-env> --display-name "Python <my-env>"
+
+where once again, `<my-env>` is the name of your conda environment. This will allow Jupyter to find your kernel. Not is should be as simpe as now running:
+
+    jupyter notebook
+
+This will open the notebook in your default browser. From here navigate the the `define_vars` script. At the top right of the window you will see the name of your kernel. If this is not the case, click `Kernel` at the top of the window, then select, `change Kernel`. There will be a list of all kernels on your machine, select that which you have create for this purpose. 
+
+Once it is loaded, you can go ahead and run the notebook in the exact same manner as outlined above. 
+
 ## Completion
 
 When finished make sure you deactivate the conda environment

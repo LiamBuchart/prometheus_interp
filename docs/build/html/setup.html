@@ -247,50 +247,95 @@
 <h1>Setup<a class="headerlink" href="#setup" title="Link to this heading">¶</a></h1>
 <section id="install">
 <h2>Install<a class="headerlink" href="#install" title="Link to this heading">¶</a></h2>
+<p>It is highly recommended that you have Visual Studio Code installed on your machine before running this. Jupyter Notebook does not like the required javascript to produce an interactive map. Please go to <code class="docutils literal notranslate"><span class="pre">https://code.visualstudio.com/download</span></code> to download and follow the intstruction. Is you do not have python on your machine, that will be the next step.</p>
 <p>Go to
 <code class="docutils literal notranslate"><span class="pre">&lt;https://www.anaconda.com/download&gt;</span></code>
 then follow the instruction to download Anaconda on your machine.</p>
 </section>
+<section id="using-vscode">
+<h2>Using VSCode<a class="headerlink" href="#using-vscode" title="Link to this heading">¶</a></h2>
+<p>Once you have VSCode installed on your machine simply oopen it and configure the settings they suggest. Once completed, at the top of the window, select <code class="docutils literal notranslate"><span class="pre">Terminal</span></code> from the bar. Then click <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Terminal</span></code>. This will open a Powershell of similar terminal at the bottom of the window. You can navigate as you typically would.</p>
+<p>In this terminal, navigate to the directory where you want to download the folder. This is also where all of the lines of code shown below will be run.</p>
+</section>
 <section id="fork-the-repository">
 <h2>Fork the repository<a class="headerlink" href="#fork-the-repository" title="Link to this heading">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>// from my personal github repo
+<p>Pick one of the following:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/LiamBuchart/prometheus_interp.git
 git fork https://github.com/LiamBuchart/prometheus_interp.git
+</pre></div>
+</div>
+<p>If you have already installed this once before, you can instead run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git pull https://github.com/LiamBuchart/prometheus_interp.git
 </pre></div>
 </div>
 <p>Now navigate to the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> directory. The jupyter notebook which contains all that you need is named <code class="docutils literal notranslate"><span class="pre">define_vars.ipynb</span></code>. This notebook calls all other python scripts that are used. The directory structure is dictated by the use of sphinx and how I want to host it. Sorry that its messy, its who I am.</p>
 </section>
+<section id="make-sure-to-condigure-overall-python-environment">
+<h2>Make Sure to condigure overall python environment<a class="headerlink" href="#make-sure-to-condigure-overall-python-environment" title="Link to this heading">¶</a></h2>
+<p>Before seting up our conda enviornment we need to install a module in your python environment so the jupyternotebook can ‘see’ your conda environments.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge nb_conda_kernels 
+</pre></div>
+</div>
+</section>
 <section id="create-a-conda-environment">
 <h2>Create a conda environment<a class="headerlink" href="#create-a-conda-environment" title="Link to this heading">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`conda create --name &lt;my-env&gt;` 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create --name &lt;my-env&gt;
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">&lt;my-env&gt;</span></code> can be whatever name that you want for the conda environment. Follow the prompts and accept any terms and click <code class="docutils literal notranslate"><span class="pre">y</span></code> to install the environment. Finally, activate the environment with:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`conda activate &lt;my-env&gt;`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda activate &lt;my-env&gt;
 </pre></div>
 </div>
 <section id="install-the-necessary-packages">
 <h3>Install the necessary packages<a class="headerlink" href="#install-the-necessary-packages" title="Link to this heading">¶</a></h3>
 <p>Use the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span></code> extension to install the following required packages:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>numpy pandas 
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ipykernel
+numpy pandas 
 geopandas 
 scipy 
 ipyleaflet 
 ipywidgets 
 xarray dask netcdf4 bottleneck 
 cfgrib 
+jupyter
 </pre></div>
 </div>
 <p>In general, the order that you install these packages does not matter execpt for two cases. Ensure that both <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> are installed before <code class="docutils literal notranslate"><span class="pre">xarray</span></code>. Ensure that <code class="docutils literal notranslate"><span class="pre">xarray</span></code> is installed before <code class="docutils literal notranslate"><span class="pre">cfgrib</span></code>.</p>
 </section>
 </section>
+<section id="get-the-python-environment-active-in-your-window">
+<h2>Get the python environment active in your window<a class="headerlink" href="#get-the-python-environment-active-in-your-window" title="Link to this heading">¶</a></h2>
+<p>Once you havew these downloaded we can open the notebook. On the left side of the window there are several symbols, the top of which is a file navigator. Click on this and open the newly downloaded folder (i.e. the folder name <code class="docutils literal notranslate"><span class="pre">prometheus_interp</span></code>). This will give a visual way to navigate the folder structure. Open the <code class="docutils literal notranslate"><span class="pre">define_vars,ipynb</span></code> file from the <code class="docutils literal notranslate"><span class="pre">docs/source</span></code> directory.</p>
+<p>Once open, the python environment will be shown at the top right of the .ipynb window. If this is not your newly created conda environment, click on it and then select the name of your new conda environment. VSCode is smart enough to have all the conda environments already listed for you. In the unlikely event that it is not immediately listed hit <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">another</span> <span class="pre">Kernel</span></code> is should then be shown.</p>
+</section>
 <section id="running">
 <h2>Running<a class="headerlink" href="#running" title="Link to this heading">¶</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">define_vars</span></code> script is designed to be run cell by cell. There are some written instructions to help with running each cell. Modify the widgets for your run and make sure to click on the interactive map to select the location for interpolation.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">define_vars</span></code> script is designed to be run cell by cell. In a Jupyter Notebook there are two main way to run each cell.</p>
+<ol class="arabic simple">
+<li><p>Click in the desired cell, then hit the <code class="docutils literal notranslate"><span class="pre">run</span></code> (play) button at the top.</p></li>
+<li><p>Click in the desired cell then hit <code class="docutils literal notranslate"><span class="pre">Shift</span></code> + <code class="docutils literal notranslate"><span class="pre">Enter</span></code>. This will activate the cell.</p></li>
+</ol>
+<p>Each cell is numbered. When the cell is running the cell number will change to the <code class="docutils literal notranslate"><span class="pre">*</span></code> sign. Once it return to the previous number, it has been completed.</p>
+<p>There are some written instructions to help with running each cell. Modify the widgets for your run and make sure to click on the interactive map to select the location for interpolation.</p>
+</section>
+<section id="other-methods">
+<h2>Other Methods<a class="headerlink" href="#other-methods" title="Link to this heading">¶</a></h2>
+<p>If you are absoluely not a VSCode user and would prefer to run in <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> please give it a shot and let me know how it goes. I have had varying degrees of success getting the map to render depending on what machine I am using.</p>
+<p>To run in a local jupyter notebook server first ensure that <code class="docutils literal notranslate"><span class="pre">nb_conda_kernels</span></code> is installed before going further. Next, make sure that your desireed virtual conda virtual environment is running. Then run the following code in your command line:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m ipykernel install --user --name &lt;my-env&gt; --display-name &quot;Python &lt;my-env&gt;&quot;
+</pre></div>
+</div>
+<p>where once again, <code class="docutils literal notranslate"><span class="pre">&lt;my-env&gt;</span></code> is the name of your conda environment. This will allow Jupyter to find your kernel. Not is should be as simpe as now running:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>jupyter notebook
+</pre></div>
+</div>
+<p>This will open the notebook in your default browser. From here navigate the the <code class="docutils literal notranslate"><span class="pre">define_vars</span></code> script. At the top right of the window you will see the name of your kernel. If this is not the case, click <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> at the top of the window, then select, <code class="docutils literal notranslate"><span class="pre">change</span> <span class="pre">Kernel</span></code>. There will be a list of all kernels on your machine, select that which you have create for this purpose.</p>
+<p>Once it is loaded, you can go ahead and run the notebook in the exact same manner as outlined above.</p>
 </section>
 <section id="completion">
 <h2>Completion<a class="headerlink" href="#completion" title="Link to this heading">¶</a></h2>
 <p>When finished make sure you deactivate the conda environment</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>`conda deactivate &lt;my-env&gt;`
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda deactivate &lt;my-env&gt;
 </pre></div>
 </div>
 <p>The final .csv file will be in the <code class="docutils literal notranslate"><span class="pre">output</span></code> folder. The naming convention is <code class="docutils literal notranslate"><span class="pre">dd/mm/yyyy_prometheus_slider_&lt;forecast_length</span> <span class="pre">(in</span> <span class="pre">hours)&gt;</span></code>.</p>
@@ -354,12 +399,16 @@ cfgrib
             <ul>
 <li><a class="reference internal" href="#">Setup</a><ul>
 <li><a class="reference internal" href="#install">Install</a></li>
+<li><a class="reference internal" href="#using-vscode">Using VSCode</a></li>
 <li><a class="reference internal" href="#fork-the-repository">Fork the repository</a></li>
+<li><a class="reference internal" href="#make-sure-to-condigure-overall-python-environment">Make Sure to condigure overall python environment</a></li>
 <li><a class="reference internal" href="#create-a-conda-environment">Create a conda environment</a><ul>
 <li><a class="reference internal" href="#install-the-necessary-packages">Install the necessary packages</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#get-the-python-environment-active-in-your-window">Get the python environment active in your window</a></li>
 <li><a class="reference internal" href="#running">Running</a></li>
+<li><a class="reference internal" href="#other-methods">Other Methods</a></li>
 <li><a class="reference internal" href="#completion">Completion</a></li>
 </ul>
 </li>

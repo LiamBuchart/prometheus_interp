@@ -1,16 +1,16 @@
 <!doctype html>
-<html class="no-js" lang="en" data-content_root="./">
+<html class="no-js" lang="en" data-content_root="../">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Setup" href="setup.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" />
 
     <!-- Generated with Sphinx 8.2.3 and Furo 2024.08.06 -->
-        <title>Prometheus_Interp 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=8f2a1f02" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=354aac6f" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=302659d7" />
+        <title>&lt;no title&gt; - Prometheus_Interp 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=354aac6f" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=302659d7" />
     
     
 
@@ -167,7 +167,7 @@
       </label>
     </div>
     <div class="header-center">
-      <a href="#"><div class="brand">Prometheus_Interp 0.1 documentation</div></a>
+      <a href="../index.html"><div class="brand">Prometheus_Interp 0.1 documentation</div></a>
     </div>
     <div class="header-right">
       <div class="theme-toggle-container theme-toggle-header">
@@ -188,12 +188,12 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   
   <span class="sidebar-brand-text">Prometheus_Interp 0.1 documentation</span>
   
-</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
   <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
@@ -201,8 +201,8 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="define_vars.html">Notebook</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../define_vars.html">Notebook</a></li>
 </ul>
 
 </div>
@@ -223,7 +223,7 @@
         </a>
         <div class="content-icon-container">
           <div class="view-this-page">
-  <a class="muted-link" href="_sources/index.rst.txt" title="View this page">
+  <a class="muted-link" href="../_sources/.virtual_documents/define_vars.ipynb.txt" title="View this page">
     <svg><use href="#svg-eye"></use></svg>
     <span class="visually-hidden">View this page</span>
   </a>
@@ -243,46 +243,262 @@
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="prometheus-interpolation-documentation">
-<h1>Prometheus Interpolation Documentation<a class="headerlink" href="#prometheus-interpolation-documentation" title="Link to this heading">¶</a></h1>
-<p>A simple tool to interpolate ECCC grib data to a specified point. Data comes from <cite>https://eccc-msc.github.io/msc-animet</cite>.</p>
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#install">Install</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#using-vscode">Using VSCode</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#fork-the-repository">Fork the repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#make-sure-to-condigure-overall-python-environment">Make Sure to condigure overall python environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#create-a-conda-environment">Create a conda environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#get-the-python-environment-active-in-your-window">Get the python environment active in your window</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#running">Running</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#other-methods">Other Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="setup.html#completion">Completion</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="define_vars.html">Notebook</a></li>
-</ul>
-</div>
-<ul class="simple">
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
-</section>
+          <p># Necessary imports
+import pandas as pd
+import geopandas as gpd
+import numpy as np
+import matplotlib.pyplot as plt
+import json
+import scipy
+import ipywidgets as widgets
+import requests
+import xarray as xr
+import shutil
+import cfgrib</p>
+<p>from ipyleaflet import Map, Marker, GeoJSON
+from ipywidgets import Output
+from IPython.display import display
+from datetime import datetime
+from scipy.interpolate import griddata</p>
+<p>from etl_prometheus_data import download_data, KDTree_interpolate_grib2_to_point, GRID_interpolate_grib2_to_point
+from file_funcs import set_filenames</p>
+<p># run the etl_nfdf_polygons.py script to get the NFDF polygons
+print(“Note: you only have to run this cell every few hours when new perimeters come in”)
+%run etl_nfdb_polygons.py</p>
+<p># Load the GeoJSON file with geopandas
+gdf = gpd.read_file(‘Canada_perimeters.geojson’)</p>
+<p># Ensure CRS is WGS84
+gdf = gdf.to_crs(epsg=4326)</p>
+<p># Optionally drop columns you don’t need
+gdf = gdf.drop(columns=[‘FIRSTDATE’, ‘LASTDATE’, ‘CONSIS_ID’])</p>
+<p># Convert to GeoJSON dict
+geojson_data = json.loads(gdf.to_json())</p>
+<p># Center the map on the centroid of all polygons
+center = gdf.geometry.unary_union.centroid.coords[0][::-1]
+m = Map(center=center, zoom=4)</p>
+<p># Add the GeoJSON layer
+geojson_layer = GeoJSON(</p>
+<blockquote>
+<div><p>data=geojson_data,
+name=’NFDB Polygons’,
+style={</p>
+<blockquote>
+<div><p>‘color’: ‘red’,
+‘weight’: 1,
+‘fillColor’: ‘orange’,
+‘fillOpacity’: 0.6</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>)
+m.add_layer(geojson_layer)</p>
+<p># add marker that will be updated on click
+marker = Marker(location=center)
+m.add_layer(marker)</p>
+<p>out = Output()</p>
+<dl>
+<dt>def handle_map_click(<a href="#id1"><span class="problematic" id="id2">**</span></a>kwargs):</dt><dd><dl>
+<dt>if kwargs.get(‘type’) == ‘click’:</dt><dd><p>latlon = kwargs.get(‘coordinates’)
+marker.location = latlon
+with out:</p>
+<blockquote>
+<div><p>print(f”Clicked location: {latlon}”)</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>m.on_interaction(handle_map_click)</p>
+<p>print(“Click on the map to get coordinates”)
+print(“Double-click to zoom in or use the zoom controls”)
+print(“Your final click is the selected location, ensure that the marker is moved to where you want it”)
+display(m, out)</p>
+<p>coords = marker.location
+print(f”The final coordinates you have selected are: {coords}”)</p>
+<p># save the map to an HTML file
+m.save(‘nfdb_polygons_map.html’)</p>
+<p># now select model and dates to download ECCC data
+from IPython.display import display
+model_dropdown = widgets.Dropdown(</p>
+<blockquote>
+<div><p>options=[‘rdps’, ‘hrdps’],
+value=’rdps’,
+description=’Model:’,</p>
+</div></blockquote>
+<p>)</p>
+<dl class="simple">
+<dt>model_run = widgets.Dropdown(</dt><dd><p>options=[‘00’, ‘06’, ‘12’, ‘18’, “auto”],
+value=’auto’,
+description=’Model Initialization Time:’,
+style= {‘description_width’: ‘initial’}</p>
+</dd>
+</dl>
+<p>)</p>
+<p>current_year = datetime.now().year
+year_slider = widgets.IntSlider(</p>
+<blockquote>
+<div><p>value=int(current_year),
+min=2020,
+max = int(current_year),
+step=1,
+description=’Year:’,
+continuous_update=False</p>
+</div></blockquote>
+<p>)</p>
+<dl class="simple">
+<dt>month_slider = widgets.IntSlider(</dt><dd><p>value=1,
+min=1,
+max=12,
+step=1,
+description=’Month:’,
+continuous_update=False</p>
+</dd>
+</dl>
+<p>)</p>
+<dl class="simple">
+<dt>day_slider = widgets.IntSlider(</dt><dd><p>value=1,
+min=1,
+max=31,
+step=1,
+description=’Day:’,
+continuous_update=False</p>
+</dd>
+</dl>
+<p>)</p>
+<dl class="simple">
+<dt>hour_slider = widgets.IntSlider(</dt><dd><p>value=0,
+min=0,
+max=23,
+step=1,
+description=’Hour (UTC):’,
+continuous_update=False</p>
+</dd>
+</dl>
+<p>)</p>
+<dl class="simple">
+<dt>forecast_slider = widgets.IntSlider(</dt><dd><p>value=48,
+min=24,  # 24
+max=72,  # 72
+step=6,  # 6
+description=’Forecast Length (hours):’,
+continuous_update=False,
+style= {‘description_width’: ‘initial’}</p>
+</dd>
+</dl>
+<p>)</p>
+<dl class="simple">
+<dt>time_offset = widgets.IntSlider(</dt><dd><p>value=6,
+min=0,
+max=14,
+step=1,
+description=’Number of hours behind UTC:’,
+continuous_update=False,
+style= {‘description_width’: ‘initial’}</p>
+</dd>
+</dl>
+<p>)</p>
+<p># Display the widgets
+print(“Requires your initial forecast hour in UTC, and your current timezone offset from UTC..”)
+print(“please”)</p>
+<p>display(model_dropdown, model_run, year_slider, month_slider, day_slider, hour_slider, forecast_slider, time_offset)</p>
+<p>print(“Once you are happy with your selections”)
+print(“Move to the next cell to begin gathering files and interpolating”)</p>
+<p>print(“Note that the MSC Datamart only has data from the previous 30 days”)</p>
+<p>print(“If you are running a very up-to-date model and this breaks…”)
+print(“The latest model data might not be in, try going one model run previous”)
+model_files = set_filenames(model_dropdown.value, model_run.value,</p>
+<blockquote>
+<div><p>year_slider.value, month_slider.value,
+day_slider.value, hour_slider.value,
+forecast_slider.value,
+time_offset.value)</p>
+</div></blockquote>
+<p># determine what kind of interpolation do you want to do
+interp_dropdown = widgets.Dropdown(</p>
+<blockquote>
+<div><p>options=[‘KDTree’, ‘Linear’],
+value=’KDTree’,
+description=’Interpolation Method:’,
+style= {‘description_width’: ‘initial’}</p>
+</div></blockquote>
+<p>)</p>
+<p>print(“KDTree finds the nearest neighbour on the model grid - fast ~10mins”)
+print(“Linear interpolation is much slower, a 30hr forecast will take ~45mins to process the data”)
+print(“In my experience the absolute difference between methods is ~0.4degC for temp”)</p>
+<p>display(interp_dropdown)</p>
+<p># make the dataframe to store the interpolate variables
+# following the example provided at:
+# <a class="reference external" href="https://spotwx.com/products/grib_index.php?model=hrdps_1km_west&amp;lat=50.80476&amp;lon=-116.82362&amp;tz=America/Edmonton&amp;display=table_prometheus">https://spotwx.com/products/grib_index.php?model=hrdps_1km_west&amp;lat=50.80476&amp;lon=-116.82362&amp;tz=America/Edmonton&amp;display=table_prometheus</a>
+# open the prometheus json file to help with creating the
+with open(‘prometheus_vars.json’, ‘r’) as f:</p>
+<blockquote>
+<div><p>prometheus_vars = json.load(f)</p>
+</div></blockquote>
+<p>all_final_vars = prometheus_vars[“required_vars”]
+dynamic_vars = prometheus_vars[“eccc_equivalents”]</p>
+<p>output_df = pd.DataFrame(columns=all_final_vars.values())</p>
+<p># now deal with the indexes - fill the HOURLY and HOUR columns
+times = model_files[“datetime”].unique()</p>
+<p>output_df[“HOURLY”] = times
+output_df[“HOUR”] = times
+output_df[“temp_datetime”] = times</p>
+<dl class="simple">
+<dt>def just_date(x):</dt><dd><p># change datetime object to dd/mm/yy format
+return x.strftime(“%d/%m/%Y”)</p>
+</dd>
+<dt>def just_hour(x):</dt><dd><p># grab just the hour of the datetime object
+return x.hour</p>
+</dd>
+</dl>
+<p>output_df[“HOURLY”] = output_df[“HOURLY”].apply(just_date)
+output_df[“HOUR”] = output_df[“HOUR”].apply(just_hour)</p>
+<p>print(output_df)</p>
+<p># loop through the model_files DataFrame and download each file
+new_row = {}
+looptime = datetime.now()  # hacky workaround for my dataframe population, im not sorry, just lazy</p>
+<p># loop through the required vars
+for ii in range(len(dynamic_vars.keys())):</p>
+<blockquote>
+<div><p>ec_var = list(dynamic_vars.keys())[ii]
+prom_var = list(dynamic_vars.values())[ii]</p>
+<p># just grab the dataframe for one variable then populate that column of the final
+# prometheus dataframe - I dont want to hear it…
+spec_model_files = model_files.loc[model_files[“variable”] == ec_var]</p>
+<dl>
+<dt>for index, row in spec_model_files.iterrows():</dt><dd><p>output_file = row[‘file’]
+file_url = row[‘full_path’]
+timestamp = row[“datetime”]
+var = row[“variable”]</p>
+<p>print(index)</p>
+<p>print(file_url, output_file)
+download_data(file_url, output_file)</p>
+<p>if interp_dropdown.value == interp_dropdown.options[0]:</p>
+<blockquote>
+<div><p>value = KDTree_interpolate_grib2_to_point(f”./temp/{output_file}”, var, coords)</p>
+</div></blockquote>
+<p>elif interp_dropdown == interp_dropdown.options[1]:</p>
+<blockquote>
+<div><p>value = GRID_interpolate_grib2_to_point(f”./temp/{output_file}”, var, coords)</p>
+</div></blockquote>
+<p>print(f”The variable is: {var} and  has a value of {value}”)</p>
+<p>output_df.loc[output_df[“temp_datetime”] == timestamp, prom_var] = np.round(np.float32(value), 2)</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>init = output_df[“temp_datetime”][0].strftime(“%Y_%m_%d_%H”) # nice initial value
+output_df = output_df.drop(columns=[‘temp_datetime’])  # clean
+output_df.reset_index(drop=True, inplace=True)  # nice indexing
+print(output_df)</p>
+<p>output_df.to_csv(f”./output/{init}_prometheus_data_{str(forecast_slider.value)}”)</p>
+<p>m = Map(center=center, zoom=4)
+display(m)</p>
 
         </article>
       </div>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="setup.html">
-              <div class="page-info">
-                <div class="context">
-                  <span>Next</span>
-                </div>
-                <div class="title">Setup</div>
-              </div>
-              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
-            </a>
+          
           
         </div>
         <div class="bottom-of-page">
@@ -308,12 +524,12 @@
       
     </aside>
   </div>
-</div><script src="_static/documentation_options.js?v=2709fde1"></script>
-    <script src="_static/doctools.js?v=9bcbadda"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/scripts/furo.js?v=5fa4622c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
+</div><script src="../_static/documentation_options.js?v=2709fde1"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/scripts/furo.js?v=5fa4622c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     </body>
 </html>
